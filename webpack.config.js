@@ -3,16 +3,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 module.exports = {
-    devtool: 'inline-source-map',
-    entry: './src/index.js',
+    mode: process.env.NODE_ENV,
+    devtool: 'source-map',
+    entry: './client/src/index.js',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'client/dist')
     },
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: './public/index.html',
+            template: './client/public/index.html',
             inject: true
         })
     ],
