@@ -2,10 +2,8 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
-
-
-
 module.exports = {
+    devtool: 'inline-source-map',
     entry: './src/index.js',
     output: {
         filename: 'main.js',
@@ -21,6 +19,11 @@ module.exports = {
     
     resolve: {
         extensions: ['.jsx', '.js']
+    },
+
+    devServer:{
+        historyApiFallback: true,
+        publicPath: '/'
     },
 
     module: {
