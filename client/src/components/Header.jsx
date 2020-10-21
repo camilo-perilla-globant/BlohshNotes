@@ -8,7 +8,7 @@ const Header = () => {
             </div>
 
             <div className="header__dropdown">
-                <a href="#">
+                <a href="#" className='btn-basic'>
                     Add note
                 </a>
             </div>

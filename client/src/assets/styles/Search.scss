@@ -1,0 +1,57 @@
+.search {
+    padding: 0.75rem;
+    padding-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    @media (min-width: 768px) {
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+.search__field {
+    margin-bottom: 0.5rem;
+    form input {
+        @extend .btn-basic;
+        display: block;
+        width: 100%;
+
+        background-image: url('https://uploads-ssl.webflow.com/5ea8febebff98adb1065a861/5eb309d676a0c0ed1911829a_search.svg');
+        background-position: 98% 50%;
+        background-repeat: no-repeat;
+        background-size: 20px;
+        &:focus {
+            outline: none;
+            border: solid 3px var(--hover-color);
+        }
+        &::placeholder {
+            font-family: 'Ubuntu';
+            font-weight: 300;
+        }
+        &:hover {
+            background-color: #ffffff;
+        }
+    }
+
+    @media (min-width: 768px) {
+        margin-right: 1.5rem;   
+    }
+}
+
+.search__category {
+    @extend .btn-basic;
+    margin-bottom: 0.5rem;
+    @media (min-width: 768px) {
+        margin-right: 1.5rem;   
+    }
+}
+
+.search__importance {
+    @extend .btn-basic;
+    margin-bottom: 0.5rem;
+    @media (min-width: 768px) {
+        margin-right: 1.5rem;   
+    }
+}
