@@ -14,7 +14,7 @@
 .search__field {
     margin-bottom: 0.5rem;
     form input {
-        @extend .btn-basic;
+        @extend .border-basic;
         display: block;
         width: 100%;
 
@@ -41,7 +41,7 @@
 }
 
 .search__category {
-    @extend .btn-basic;
+    @extend .border-basic;
     margin-bottom: 0.5rem;
     @media (min-width: 768px) {
         margin-right: 1.5rem;   
@@ -49,7 +49,7 @@
 }
 
 .search__importance {
-    @extend .btn-basic;
+    @extend .border-basic;
     margin-bottom: 0.5rem;
     @media (min-width: 768px) {
         margin-right: 1.5rem;   
