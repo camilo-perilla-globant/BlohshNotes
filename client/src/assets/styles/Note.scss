@@ -10,7 +10,49 @@
     &:hover {
         transform: translate(-12px, -12px);
         background-color: #fff;
+        .note__title {
+            text-decoration: underline;
+        }
     }
+}
+
+.note__title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    color: var(--color-text);
+}
+
+.note__category {
+    font-weight: 500;
+    font-size: 0.875;
+    margin-bottom: 1rem;
+}
+.note__content {
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+.note__options {
+    display: flex;
+}
+@mixin option($bgColor, $color: white) {
+    padding: 0.25rem 1rem;
+    color: $color;
+    background-color: $bgColor;
+    border-radius: 20px;
+    font-size: 0.875rem;
+}
+
+.note__delete {
+    @include option(#e36387);
+}
+
+.note__edit {
+    @include option(#99f3bd, $color: #276749);
+    margin-right: 0.75rem;
 }
 
 .note__bg {

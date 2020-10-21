@@ -14,8 +14,8 @@ const Note = () => {
                     So you are tought guy, like a really rought guy
                 </div>
                 <div className="note__options">
-                    <div className="note__delete">Delete</div>
-                    <div className="note__edit">Edit</div>
+                    <a href="#" className='note__edit'>Edit</a>
+                    <a href="#" className='note__delete'>Delete</a>
                 </div>
                 <div className="note__timestamps"></div>
             </div>
