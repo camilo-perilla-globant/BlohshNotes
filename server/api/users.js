@@ -4,7 +4,10 @@ const User = require('../models/User')
 
 router.get('/', async (req, res) => {
     const users = await User.find()
-    res.json(users)
+    res.json({
+        message: 'List of users',
+        data: users
+    })
 })
 
 

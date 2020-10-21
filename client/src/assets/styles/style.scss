@@ -1,3 +1,10 @@
+:root {
+    --primary-color: #feebc8;
+    --text-color: #2b2927;
+    --border-color: #585450;
+    --hover-color: #f6ad55;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -5,6 +12,8 @@
 body {
     font-family: system-ui;
     margin: 0;
+    background-color: var(--primary-color);
+    font-family: 'Ubuntu';
 }
 
 a {
@@ -17,3 +26,5 @@ ul {
     padding: 0;
     list-style: none;
 }
+
+@import './Header.scss'
