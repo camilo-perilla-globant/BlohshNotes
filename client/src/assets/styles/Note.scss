@@ -38,16 +38,16 @@
 .note__options {
     display: flex;
 }
-@mixin option($bgColor, $color: white) {
-    padding: 0.25rem 1rem;
+@mixin option($bgColor, $color: white, $radius: 3px) {
+    padding: 0.5rem 1rem;
     color: $color;
     background-color: $bgColor;
-    border-radius: 20px;
+    border-radius: $radius;
     font-size: 0.875rem;
 }
 
 .note__delete {
-    @include option(#e36387);
+    @include option(#e36387, $color: #810000);
 }
 
 .note__edit {

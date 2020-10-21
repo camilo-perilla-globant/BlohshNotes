@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from './Header'
 import NoteContainer from './NoteContainer'
+import Scroll from './Scroll'
 import Search from './Search'
 
 const App = () => {
@@ -8,7 +9,9 @@ const App = () => {
         <>
             <Header />
             <Search />
-            <NoteContainer />
+            <Scroll>
+                <NoteContainer />
+            </Scroll>
         </>
     )
 }
