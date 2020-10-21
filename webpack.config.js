@@ -8,7 +8,7 @@ module.exports = {
     entry: './client/src/index.js',
     output: {
         filename: 'main.js',
-        path: path.resolve(__dirname, 'client/dist')
+        path: path.resolve(__dirname, 'server/public/')
     },
     plugins: [
         new CleanWebpackPlugin(),
