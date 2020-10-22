@@ -7,7 +7,7 @@ const Header = () => {
 const openModal = () => {
     dispatch({
         type: 'open-modal',
-        payload: ''
+        payload: 'Add Note'
     })
 }
 

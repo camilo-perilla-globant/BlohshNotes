@@ -38,7 +38,7 @@ const Modal = () => {
     return state.showModal && (
         <div className='modal'>
             <div className="modal__content">
-                <h3>Add a Note</h3>
+                <h3>{state.modalAction}</h3>
                 <img
                 onClick={closeModal}
                 className='modal__close'
@@ -79,7 +79,7 @@ const Modal = () => {
                     rows="10">
                     </textarea>
                     
-                    <button type="submit">Add Note</button>
+                    <button type="submit">{state.modalAction}</button>
                 </form>
             </div>
         </div>

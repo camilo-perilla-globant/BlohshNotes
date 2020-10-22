@@ -15,7 +15,8 @@ const appStateReducer = (state, action) => {
         case 'open-modal':
             return {
                 ...state,
-                showModal: true
+                showModal: true,
+                modalAction: action.payload
             }
         default:
             return state
@@ -24,6 +25,7 @@ const appStateReducer = (state, action) => {
 
 const initialState = {
     showModal: false,
+    modalAction: ''
 
 }
 

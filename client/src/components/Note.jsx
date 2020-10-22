@@ -1,7 +1,16 @@
 import React from 'react'
+import {useAppState} from './AppContext'
 
 const Note = (props) => {
     const { title, content, category} = props
+    const [state, dispatch] = useAppState()
+    const editNote = () => {
+        dispatch({
+            type: 'open-modal',
+            payload: 'Edit Note'
+        })
+    }
+
     return (
         <div className='note'>
             <div className="note__body">
@@ -15,8 +24,17 @@ const Note = (props) => {
                     {content}
                 </div>
                 <div className="note__options">
-                    <a href="#" className='note__edit'>Edit</a>
-                    <a href="#" className='note__delete'>Delete</a>
+                    <a
+                    onClick={editNote}
+                    href="#"
+                    className='note__edit'>
+                        Edit
+                    </a>
+                    <a
+                    href="#"
+                    className='note__delete'>
+                        Delete
+                    </a>
                 </div>
                 <div className="note__timestamps"></div>
             </div>
