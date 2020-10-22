@@ -1,15 +1,7 @@
 import React from 'react'
-import { useAppState } from './AppContext'
+import { Link } from 'react-router-dom'
 
-const Header = () => {
-    const [state, dispatch] = useAppState()
-
-const openModal = () => {
-    dispatch({
-        type: 'open-modal',
-        payload: 'Add Note'
-    })
-}
+const Header = ({history}) => {
 
     return (
         <header>
@@ -18,12 +10,9 @@ const openModal = () => {
             </div>
 
             <div className="header__dropdown">
-                <a
-                onClick={openModal}
-                href="#"
-                className='border-basic'>
-                    Add note
-                </a>
+                <Link to='/add' className='border-basic'>
+                    Add Note
+                </Link>
             </div>
         </header>
     )

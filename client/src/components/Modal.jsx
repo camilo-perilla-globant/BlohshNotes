@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useAppState } from './AppContext'
 
-const Modal = () => {
+const Modal = ({ history }) => {
 
     const [note, setNote] = useState({})
     const [state, dispatch] = useAppState()
@@ -34,16 +34,13 @@ const Modal = () => {
     }
 
     const closeModal = () => {
-        dispatch({
-            type: 'close-modal',
-            payload: ''
-        })
+        history.push('/')
     }
 
-    return state.showModal && (
+    return (
         <div className='modal'>
             <div className="modal__content">
-                <h3>{state.modalAction}</h3>
+                <h3>Add a Note</h3>
                 <img
                 onClick={closeModal}
                 className='modal__close'
@@ -84,7 +81,7 @@ const Modal = () => {
                     rows="10">
                     </textarea>
                     
-                    <button type="submit">{state.modalAction}</button>
+                    <button type="submit">Add Note</button>
                 </form>
             </div>
         </div>

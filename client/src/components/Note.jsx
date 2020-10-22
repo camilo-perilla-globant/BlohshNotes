@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {useAppState} from './AppContext'
 
 const Note = (props) => {
@@ -6,12 +7,6 @@ const Note = (props) => {
     const {_id, createdAt, updatedAt} = props
     const [state, dispatch] = useAppState()
 
-    const editNote = () => {
-        dispatch({
-            type: 'open-modal',
-            payload: 'Edit Note'
-        })
-    }
     const deleteNote = () => {
         fetch(`http://localhost:3000/api/v1/notes/${_id}`, {
             method: 'DELETE',
@@ -38,12 +33,9 @@ const Note = (props) => {
                     {content}
                 </div>
                 <div className="note__options">
-                    <a
-                    onClick={editNote}
-                    href="#"
-                    className='note__edit'>
+                    <Link className='note__edit' to='/edit'>
                         Edit
-                    </a>
+                    </Link>
                     <a
                     onClick={deleteNote}
                     href="#"

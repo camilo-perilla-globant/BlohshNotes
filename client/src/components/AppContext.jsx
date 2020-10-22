@@ -6,18 +6,7 @@ export const useAppState = () => useContext(AppContext)
 
 const appStateReducer = (state, action) => {
     switch(action.type) {
-        case 'close-modal':
-            return {
-                ...state,
-                showModal: false
-            }
-
-        case 'open-modal':
-            return {
-                ...state,
-                showModal: true,
-                modalAction: action.payload
-            }
+        
         case 'add-note':
             return {
                 ...state,
@@ -40,7 +29,6 @@ const appStateReducer = (state, action) => {
 }
 
 const initialState = {
-    showModal: false,
     modalAction: '',
     notesAmount: 0
 

@@ -5,16 +5,22 @@ import Scroll from './Scroll'
 import Search from './Search'
 import Modal from './Modal'
 import { AppStateProvider } from './AppContext'
+import { BrowserRouter, Switch, Route} from 'react-router-dom'
 
 const App = () => {
     return (
         <AppStateProvider>
-            <Header />
-            <Search />
-            <Scroll>
-                <Container />
-            </Scroll>
-            <Modal />
+            <BrowserRouter>
+                <Header />
+                <Search />
+                <Scroll>
+                    <Container />
+                </Scroll>
+                <Switch>
+                    <Route exact path='/add' component={Modal}/>
+                    <Route exact path='/edit' component={Modal}/>
+                </Switch>
+            </BrowserRouter>
         </AppStateProvider>
     )
 }

@@ -18,7 +18,7 @@ const NoteContainer = () => {
         })
         .catch(console.log)
 
-    }, [state])
+    }, [])
 
     return (
         <div className='grid-container'>
