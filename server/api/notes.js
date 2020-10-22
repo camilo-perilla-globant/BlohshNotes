@@ -27,5 +27,18 @@ router.post('/', async (req, res, next) => {
     }
 })
 
+router.delete('/:id', async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const deletedNote = await Note.findByIdAndDelete(id)
+        res.json({
+            message: 'Note deleted',
+            deletedNote
+        })
+    } catch (error) {
+        next(error)
+    }
+})
+
 
 module.exports = router

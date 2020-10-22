@@ -13,9 +13,9 @@ const NoteContainer = () => {
 
     return (
         <div className='grid-container'>
-            {notes.map((note, i) => {
+            {notes.map(note => {
                 return(
-                    <Note {...note} key={i}/>
+                    <Note {...note} key={note._id}/>
                 )
             })}
         </div>

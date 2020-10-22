@@ -3,12 +3,21 @@ import {useAppState} from './AppContext'
 
 const Note = (props) => {
     const { title, content, category} = props
+    const {_id, createdAt, updatedAt} = props
     const [state, dispatch] = useAppState()
+
     const editNote = () => {
         dispatch({
             type: 'open-modal',
             payload: 'Edit Note'
         })
+    }
+    const deleteNote = () => {
+        fetch(`http://localhost:3000/api/v1/notes/${_id}`, {
+            method: 'DELETE',
+            headers: {'Content-Type': 'application/json'}
+        }).then(res => res.json()).then(console.log)
+        .catch(console.log)
     }
 
     return (
@@ -31,6 +40,7 @@ const Note = (props) => {
                         Edit
                     </a>
                     <a
+                    onClick={deleteNote}
                     href="#"
                     className='note__delete'>
                         Delete
