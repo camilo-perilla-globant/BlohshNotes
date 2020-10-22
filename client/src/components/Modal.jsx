@@ -15,7 +15,7 @@ const Modal = () => {
         .then(res => res.json()).then(console.log)
         .catch(console.log)
         
-        // e.target.reset()
+        e.target.reset()
     }
 
     const handleChange = e => {

@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
     try {
         const newNote = new Note(req.body)
         await newNote.save()
