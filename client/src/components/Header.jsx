@@ -1,6 +1,16 @@
 import React from 'react'
+import { useAppState } from './AppContext'
 
 const Header = () => {
+    const [state, dispatch] = useAppState()
+
+const openModal = () => {
+    dispatch({
+        type: 'open-modal',
+        payload: ''
+    })
+}
+
     return (
         <header>
             <div className="header__logo">
@@ -8,7 +18,10 @@ const Header = () => {
             </div>
 
             <div className="header__dropdown">
-                <a href="#" className='border-basic'>
+                <a
+                onClick={openModal}
+                href="#"
+                className='border-basic'>
                     Add note
                 </a>
             </div>

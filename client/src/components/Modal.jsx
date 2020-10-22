@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
+import { useAppState } from './AppContext'
 
 const Modal = () => {
 
     const [note, setNote] = useState({})
+    const [state, dispatch] = useAppState()
 
     const handleSubmit = e => {
         console.log(note)
@@ -16,6 +18,7 @@ const Modal = () => {
         .catch(console.log)
         
         e.target.reset()
+        closeModal()
     }
 
     const handleChange = e => {
@@ -25,11 +28,19 @@ const Modal = () => {
         })
     }
 
-    return (
+    const closeModal = () => {
+        dispatch({
+            type: 'close-modal',
+            payload: ''
+        })
+    }
+
+    return state.showModal && (
         <div className='modal'>
             <div className="modal__content">
                 <h3>Add a Note</h3>
                 <img
+                onClick={closeModal}
                 className='modal__close'
                 src="https://uploads-ssl.webflow.com/5ea8febebff98adb1065a861/5eaf6bb700e6c65c4ff4a691_Close%20Outline.1.png" alt="Close"/>
 
