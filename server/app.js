@@ -5,6 +5,7 @@ const api = require('./api/api')
 const cors = require('cors')
 require('dotenv').config()
 
+const { logError, notFound, errorHandler } = require('./middlewares')
 
 const connection = require('./database')
 connection.then(db => console.log('DB is connected'))
@@ -17,11 +18,14 @@ app.use(express.json())
 app.use(express.urlencoded({
     extended: false
 }))
+app.use(express.static(path.join(__dirname, 'public')))
+
 
 app.use('/api/v1', api)
 
-app.use(express.static(path.join(__dirname, 'public')))
-
+app.use(notFound)
+app.use(logError)
+app.use(errorHandler)
 
 app.listen(app.get('port'), () => {
     console.log('Server on port 3000')
