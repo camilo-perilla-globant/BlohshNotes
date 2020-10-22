@@ -1,6 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 const Modal = () => {
+
+    const [note, setNote] = useState({})
+
+    const handleSubmit = e => {
+        // console.log(note)
+        e.preventDefault()
+        e.target.reset()
+       
+    }
+
+    const handleChange = e => {
+        setNote({
+            ...note,
+            [e.target.name]: e.target.value
+        })
+    }
+
     return (
         <div className='modal'>
             <div className="modal__content">
@@ -9,12 +26,14 @@ const Modal = () => {
                 className='modal__close'
                 src="https://uploads-ssl.webflow.com/5ea8febebff98adb1065a861/5eaf6bb700e6c65c4ff4a691_Close%20Outline.1.png" alt="Close"/>
 
-                <form >
+                <form onSubmit={handleSubmit}>
                     <label htmlFor="title">
                         Note Title
                     </label>
                     
                     <input
+                    onChange={handleChange}
+                    name='title'
                     className='input'
                     type="text"
                     placeholder='Enter the title of the note'
@@ -26,6 +45,8 @@ const Modal = () => {
                     </label>
                     
                     <input
+                    onChange={handleChange}
+                    name='category'
                     className='input'
                     type="text"
                     placeholder='i.e JavaScript, Habits, Series to watch'
@@ -33,7 +54,11 @@ const Modal = () => {
                     
 
                     <label htmlFor="content">Content</label>
-                    <textarea id="content"rows="10">
+                    <textarea
+                    onChange={handleChange}
+                    name='content'
+                    id="content"
+                    rows="10">
                     </textarea>
                     
                     <button type="submit">Add Note</button>

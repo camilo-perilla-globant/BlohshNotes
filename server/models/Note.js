@@ -7,7 +7,10 @@ const noteSchema = new Schema({
     },
     content: {
         type: String,
-        minlength: 30,
+        required: true
+    },
+    category: {
+        type: String,
         required: true
     }
 }, {
