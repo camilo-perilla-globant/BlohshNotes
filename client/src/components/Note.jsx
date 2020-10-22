@@ -1,17 +1,18 @@
 import React from 'react'
 
-const Note = () => {
+const Note = (props) => {
+    const { title, content, category} = props
     return (
         <div className='note'>
             <div className="note__body">
                 <div className="note__title">
-                    Billie Eilish
+                    {title}
                 </div>
                 <div className="note__category">
-                    Blohsh
+                    {category}
                 </div>
                 <div className="note__content">
-                    So you are tought guy, like a really rought guy
+                    {content}
                 </div>
                 <div className="note__options">
                     <a href="#" className='note__edit'>Edit</a>
