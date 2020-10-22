@@ -19,6 +19,11 @@ const Modal = () => {
         
         e.target.reset()
         closeModal()
+
+        dispatch({
+            type: 'add-note',
+            payload: ''
+        })
     }
 
     const handleChange = e => {

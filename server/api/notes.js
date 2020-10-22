@@ -8,7 +8,7 @@ router.get('/', async (req, res, next) => {
         if (!notes) return next()
         res.json({
             message: 'List of notes',
-            data: notes
+            info: notes
         })
     } catch (err) {
         next(err)
