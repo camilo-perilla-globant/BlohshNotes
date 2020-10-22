@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const app = express()
 const api = require('./api/api')
+const cors = require('cors')
 require('dotenv').config()
 
 
@@ -11,6 +12,7 @@ connection.then(db => console.log('DB is connected'))
 
 
 app.set('port', process.env.PORT || 3000)
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({
     extended: false

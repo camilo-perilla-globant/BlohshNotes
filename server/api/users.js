@@ -10,5 +10,14 @@ router.get('/', async (req, res) => {
     })
 })
 
+router.post('/', async (req, res) => {
+    console.log(req.body)
+    const newUser = new User(req.body)
+    await newUser.save()
+    res.json({
+        message: 'User was created'
+    })
+})
+
 
 module.exports = router

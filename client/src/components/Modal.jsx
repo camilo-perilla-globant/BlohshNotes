@@ -5,10 +5,17 @@ const Modal = () => {
     const [note, setNote] = useState({})
 
     const handleSubmit = e => {
-        // console.log(note)
+        console.log(note)
         e.preventDefault()
-        e.target.reset()
-       
+        fetch('http://localhost:3000/api/v1/notes', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(note)
+        })
+        .then(res => res.json()).then(console.log)
+        .catch(console.log)
+        
+        // e.target.reset()
     }
 
     const handleChange = e => {
