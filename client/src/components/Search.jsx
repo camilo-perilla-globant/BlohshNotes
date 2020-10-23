@@ -11,11 +11,9 @@ const Search = () => {
         })
     }
 
-
-
     return (
         <div className='search'>
-            <div className="search__field">
+            <div className="search__field search__field--term">
                 <form>
                     <input
                     name='search_field'
@@ -25,8 +23,8 @@ const Search = () => {
                 </form>
             </div>
 
-            <div className='search__category'>
-                Category:
+            <div className='search__field search__field--category'>
+                <span>Category:</span>
                 <select
                 name='category'
                 onChange={handleInputChange}>
@@ -39,8 +37,8 @@ const Search = () => {
                 </select>
             </div>
             
-            <div className='search__importance'>
-                Search by:
+            <div className='search__field search__field--query'>
+                <span>Search by:</span>
                 <select
                 name='field'
                 onChange={handleInputChange}>

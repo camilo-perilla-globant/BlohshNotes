@@ -12,46 +12,60 @@
 }
 
 .search__field {
+    @extend .border-basic;
+    padding: 0 1rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
     margin-bottom: 0.5rem;
-    form input {
-        @extend .border-basic;
-        display: block;
+    @media (min-width: 768px) {
+        margin-right: 1.5rem;
+        width: 300px;
+    }
+    select {
+        cursor: pointer;
+        padding: 0.5rem 1rem;
+        border: none;
+        outline: none;
+        width: 40%;
+        margin-left: 2rem;
+        font-family: 'Ubuntu';
+        font-size: 1rem;
+        background-color: transparent;
+    }
+}
+
+.search__field--term {
+    &:hover {
+        background-color: #fff;
+    }
+    form {
         width: 100%;
-
-        background-image: url('https://uploads-ssl.webflow.com/5ea8febebff98adb1065a861/5eb309d676a0c0ed1911829a_search.svg');
-        background-position: 98% 50%;
-        background-repeat: no-repeat;
-        background-size: 20px;
-        &:focus {
-            outline: none;
-            border: solid 3px var(--hover-color);
-        }
-        &::placeholder {
+        input {
+            padding: 0.5rem 0;
+            font-size: 1rem;
             font-family: 'Ubuntu';
-            font-weight: 300;
+            color: var(--text-color);
+            width: 100%;
+            display: block;
+            background-image: url('https://uploads-ssl.webflow.com/5ea8febebff98adb1065a861/5eb309d676a0c0ed1911829a_search.svg');
+            background-position: 99% 50%;
+            background-repeat: no-repeat;
+            background-size: 20px;
+            border: none;
+            background-color: transparent;
+            &:focus {
+                outline: none;
+            }
+            &::placeholder {
+                font-family: 'Ubuntu';
+                font-weight: 300;
+            }
         }
-        &:hover {
-            background-color: #ffffff;
-        }
-    }
-
-    @media (min-width: 768px) {
-        margin-right: 1.5rem;   
-    }
+    }    
 }
 
-.search__category {
-    @extend .border-basic;
-    margin-bottom: 0.5rem;
-    @media (min-width: 768px) {
-        margin-right: 1.5rem;   
-    }
-}
 
-.search__importance {
-    @extend .border-basic;
-    margin-bottom: 0.5rem;
-    @media (min-width: 768px) {
-        margin-right: 1.5rem;   
-    }
-}
+
