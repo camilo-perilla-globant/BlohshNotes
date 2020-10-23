@@ -6,10 +6,16 @@ export const useAppState = () => useContext(AppContext)
 
 const appStateReducer = (state, action) => {
     switch(action.type) {
-        case 'set-amount':
+        case 'set-notes':
             return {
                 ...state,
-                notesAmount: action.payload
+                notes: action.payload
+            }
+
+        case 'set-categories':
+            return {
+                ...state,
+                categories: state.notes.map(note => note.category)
             }
 
         case 'set-search_field':
@@ -24,8 +30,7 @@ const appStateReducer = (state, action) => {
 
 const initialState = {
     categories: [],
-    notesAmount: 0,
-    listOfNotes: [],
+    notes: [],
     searchField: ''
 
 }

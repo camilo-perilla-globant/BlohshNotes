@@ -12,8 +12,12 @@ const NoteContainer = () => {
             .then(res => res.json()).then(data => {
                 setNotes(data.info)
                 dispatch({
-                    type: 'set-amount',
-                    payload: data.info.length
+                    type: 'set-notes',
+                    payload: data.info
+                })
+                dispatch({
+                    type: 'set-categories',
+                    payload: data.info
                 })
             })
             .catch(console.log)
@@ -21,9 +25,15 @@ const NoteContainer = () => {
 
     }, [])
 
+    const { searchField } = state
+
+    const filteredNotes = notes.filter(note => {
+        return note.title.toLowerCase().includes(searchField.toLowerCase())
+    })
+
     return (
         <div className='grid-container'>
-            {notes.map(note => {
+            {filteredNotes.map(note => {
                 return(
                     <Note {...note} key={note._id}/>
                 )
