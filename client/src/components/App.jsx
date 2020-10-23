@@ -13,12 +13,15 @@ const App = () => {
             <BrowserRouter>
                 <Header />
                 <Search />
-                <Scroll>
-                    <Container />
-                </Scroll>
+                
                 <Switch>
                     <Route exact path='/add' component={Modal}/>
                     <Route exact path='/edit' component={Modal}/>
+                    <Route exact path='/' render={() => (
+                        <Scroll>
+                            <Container />
+                        </Scroll>)
+                    }/>
                 </Switch>
             </BrowserRouter>
         </AppStateProvider>

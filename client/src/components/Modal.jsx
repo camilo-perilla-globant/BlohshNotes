@@ -7,7 +7,6 @@ const Modal = ({ history }) => {
     const [state, dispatch] = useAppState()
 
     const handleSubmit = e => {
-        console.log(note)
         e.preventDefault()
         fetch('http://localhost:3000/api/v1/notes', {
             method: 'POST',
