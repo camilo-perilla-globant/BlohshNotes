@@ -25,11 +25,12 @@ const NoteContainer = () => {
 
     }, [])
 
-    const { searchField } = state
+    const { searchField, currentCategory, field } = state
 
     const filteredNotes = notes.filter(note => {
-        return note.title.toLowerCase().includes(searchField.toLowerCase())
+        return note[field].toLowerCase().includes(searchField.toLowerCase())
     })
+    .filter(note => note.category.includes(currentCategory))
 
     return (
         <div className='grid-container'>

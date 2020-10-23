@@ -17,11 +17,22 @@ const appStateReducer = (state, action) => {
                 ...state,
                 categories: state.notes.map(note => note.category)
             }
+        case 'set-category':
+            return {
+                ...state,
+                currentCategory: action.payload
+            }
+
 
         case 'set-search_field':
             return {
                 ...state,
                 searchField: action.payload
+            }
+        case 'set-field':
+            return {
+                ...state,
+                field: action.payload
             }
         default:
             return state
@@ -30,8 +41,10 @@ const appStateReducer = (state, action) => {
 
 const initialState = {
     categories: [],
+    currentCategory: '',
     notes: [],
-    searchField: ''
+    searchField: '',
+    field: 'title'
 
 }
 
