@@ -10,7 +10,19 @@ const Header = ({history}) => {
             </div>
 
             <div className="header__dropdown">
-                <Link to='/add' className='border-basic'>
+                <Link
+                className='border-basic'
+                to={{
+                    pathname:'/add',
+                        state: {
+                            message: 'Add a Note',
+                            method: 'POST',
+                            title: null,
+                            content: null,
+                            category: null,
+                            id: null
+                        }
+                    }}>
                     Add Note
                 </Link>
             </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useAppState } from './AppContext'
 
-const Modal = ({ history }) => {
+const Modal = ({ history, location }) => {
 
     const [note, setNote] = useState({})
     const [state, dispatch] = useAppState()
@@ -9,7 +9,7 @@ const Modal = ({ history }) => {
     const handleSubmit = e => {
         e.preventDefault()
         fetch('http://localhost:3000/api/v1/notes', {
-            method: 'POST',
+            method: location.state.method,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(note)
         })
@@ -36,10 +36,11 @@ const Modal = ({ history }) => {
         history.push('/')
     }
 
+
     return (
         <div className='modal'>
             <div className="modal__content">
-                <h3>Add a Note</h3>
+                <h3>{location.state.message}</h3>
                 <img
                 onClick={closeModal}
                 className='modal__close'
@@ -51,6 +52,7 @@ const Modal = ({ history }) => {
                     </label>
                     
                     <input
+                    value={}
                     onChange={handleChange}
                     name='title'
                     className='input'
@@ -64,6 +66,7 @@ const Modal = ({ history }) => {
                     </label>
                     
                     <input
+                    value={location.state.category}
                     onChange={handleChange}
                     name='category'
                     className='input'
@@ -74,13 +77,14 @@ const Modal = ({ history }) => {
 
                     <label htmlFor="content">Content</label>
                     <textarea
+                    value={location.state.content}
                     onChange={handleChange}
                     name='content'
                     id="content"
                     rows="10">
                     </textarea>
                     
-                    <button type="submit">Add Note</button>
+                    <button type="submit">{location.state.message}</button>
                 </form>
             </div>
         </div>

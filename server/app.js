@@ -3,6 +3,7 @@ const path = require('path')
 const app = express()
 const api = require('./api/api')
 const cors = require('cors')
+const morgan = require('morgan')
 require('dotenv').config()
 
 const { logError, notFound, errorHandler } = require('./middlewares')
@@ -14,6 +15,7 @@ connection.then(db => console.log('DB is connected'))
 
 app.set('port', process.env.PORT || 3000)
 app.use(cors())
+app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({
     extended: false

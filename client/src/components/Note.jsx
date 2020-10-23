@@ -33,7 +33,19 @@ const Note = (props) => {
                     {content}
                 </div>
                 <div className="note__options">
-                    <Link className='note__edit' to='/edit'>
+                    <Link
+                    className='note__edit'
+                    to={{
+                        pathname:'/edit',
+                            state: {
+                                message: 'Edit Note',
+                                method: 'PUT',
+                                title,
+                                content,
+                                category,
+                                id: _id
+                            }
+                        }}>
                         Edit
                     </Link>
                     <a
