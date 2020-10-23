@@ -17,13 +17,12 @@ const Modal = ({ history, location }) => {
         .then(res => res.json()).then(console.log)
         .catch(console.log)
         
-        e.target.reset()
-        closeModal()
-
         dispatch({
             type: 'add-note',
             payload: ''
         })
+        e.target.reset()
+        closeModal()
     }
 
     const handleChange = e => {
