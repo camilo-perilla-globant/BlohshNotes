@@ -20,7 +20,7 @@ const Header = ({history}) => {
                             title: null,
                             content: null,
                             category: null,
-                            id: null
+                            id: ''
                         }
                     }}>
                     Add Note

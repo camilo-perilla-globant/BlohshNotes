@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useAppState } from './AppContext'
+import close from '../assets/images/close.png'
 
 const Modal = ({ history, location }) => {
 
@@ -8,7 +9,7 @@ const Modal = ({ history, location }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        fetch('http://localhost:3000/api/v1/notes', {
+        fetch(`http://localhost:3000/api/v1/notes${location.state.id}`, {
             method: location.state.method,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(note)
@@ -44,7 +45,8 @@ const Modal = ({ history, location }) => {
                 <img
                 onClick={closeModal}
                 className='modal__close'
-                src="https://uploads-ssl.webflow.com/5ea8febebff98adb1065a861/5eaf6bb700e6c65c4ff4a691_Close%20Outline.1.png" alt="Close"/>
+                src={close} 
+                alt="Close"/>
 
                 <form onSubmit={handleSubmit}>
                     <label htmlFor="title">
@@ -52,7 +54,6 @@ const Modal = ({ history, location }) => {
                     </label>
                     
                     <input
-                    value={}
                     onChange={handleChange}
                     name='title'
                     className='input'
@@ -66,7 +67,6 @@ const Modal = ({ history, location }) => {
                     </label>
                     
                     <input
-                    value={location.state.category}
                     onChange={handleChange}
                     name='category'
                     className='input'
@@ -77,7 +77,6 @@ const Modal = ({ history, location }) => {
 
                     <label htmlFor="content">Content</label>
                     <textarea
-                    value={location.state.content}
                     onChange={handleChange}
                     name='content'
                     id="content"

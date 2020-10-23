@@ -43,7 +43,7 @@ const Note = (props) => {
                                 title,
                                 content,
                                 category,
-                                id: _id
+                                id: `/${_id}`
                             }
                         }}>
                         Edit
