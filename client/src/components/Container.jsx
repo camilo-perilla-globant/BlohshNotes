@@ -25,10 +25,10 @@ const NoteContainer = () => {
 
     }, [])
 
-    const { searchField, currentCategory, field } = state
+    const { searchTerm, currentCategory, query } = state
 
     const filteredNotes = notes.filter(note => {
-        return note[field].toLowerCase().includes(searchField.toLowerCase())
+        return note[query].toLowerCase().includes(searchTerm.toLowerCase())
     })
     .filter(note => note.category.includes(currentCategory))
 

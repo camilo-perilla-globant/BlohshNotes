@@ -16,7 +16,7 @@ const Search = () => {
             <div className="search__field search__field--term">
                 <form>
                     <input
-                    name='search_field'
+                    name='search_term'
                     onChange={handleInputChange}
                     type="text"
                     placeholder='Search Notes'/>
@@ -40,7 +40,7 @@ const Search = () => {
             <div className='search__field search__field--query'>
                 <span>Search by:</span>
                 <select
-                name='field'
+                name='query'
                 onChange={handleInputChange}>
                     <option value="title">Title</option>
                     <option value="content">Content</option>

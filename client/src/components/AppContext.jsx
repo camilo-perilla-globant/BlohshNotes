@@ -24,15 +24,15 @@ const appStateReducer = (state, action) => {
             }
 
 
-        case 'set-search_field':
+        case 'set-search_term':
             return {
                 ...state,
-                searchField: action.payload
+                searchTerm: action.payload
             }
-        case 'set-field':
+        case 'set-query':
             return {
                 ...state,
-                field: action.payload
+                query: action.payload
             }
         default:
             return state
@@ -43,8 +43,8 @@ const initialState = {
     categories: [],
     currentCategory: '',
     notes: [],
-    searchField: '',
-    field: 'title'
+    searchTerm: '',
+    query: 'title'
 
 }
 
