@@ -6,22 +6,16 @@ export const useAppState = () => useContext(AppContext)
 
 const appStateReducer = (state, action) => {
     switch(action.type) {
-        
-        case 'add-note':
-            return {
-                ...state,
-                notesAmount: state.notesAmount + 1
-            }
-
-        case 'delete-note':
-            return {
-                ...state,
-                notesAmount: state.notesAmount - 1
-            }
         case 'set-amount':
             return {
                 ...state,
                 notesAmount: action.payload
+            }
+
+        case 'set-search_field':
+            return {
+                ...state,
+                searchField: action.payload
             }
         default:
             return state
@@ -29,8 +23,10 @@ const appStateReducer = (state, action) => {
 }
 
 const initialState = {
-    modalAction: '',
-    notesAmount: 0
+    categories: [],
+    notesAmount: 0,
+    listOfNotes: [],
+    searchField: ''
 
 }
 

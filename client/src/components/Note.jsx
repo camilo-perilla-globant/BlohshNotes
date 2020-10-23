@@ -13,11 +13,7 @@ const Note = (props) => {
             headers: {'Content-Type': 'application/json'}
         }).then(res => res.json()).then(console.log)
         .catch(console.log)
-
-        dispatch({
-            type: 'delete-note',
-            payload: ''
-        })
+        
     }
 
     return (
