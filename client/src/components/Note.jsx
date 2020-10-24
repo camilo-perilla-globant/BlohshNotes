@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {useAppState} from './AppContext'
+import Swal from 'sweetalert2'
+
 
 const Note = (props) => {
     const { title, content, category} = props
@@ -8,11 +10,33 @@ const Note = (props) => {
     const [state, dispatch] = useAppState()
 
     const deleteNote = () => {
-        fetch(`http://localhost:3000/api/v1/notes/${_id}`, {
-            method: 'DELETE',
-            headers: {'Content-Type': 'application/json'}
-        }).then(res => res.json()).then(console.log)
-        .catch(console.log)
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to recover this note!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#e36387',
+            confirmButtonText: 'Yes, delete it!'
+        })
+        .then(result => {
+            if (result.isConfirmed) {
+
+                fetch(`http://localhost:3000/api/v1/notes/${_id}`, {
+                    method: 'DELETE',
+                    headers: {'Content-Type': 'application/json'}
+                }).then(res => res.json()).then(console.log)
+                .catch(console.log)
+
+                Swal.fire(
+                    'Deleted!',
+                    'Your note has been deleted.',
+                    'success'
+                )
+            }
+        })
+        
+        
         
     }
 
