@@ -1,13 +1,12 @@
 import React from 'react'
 import Swal from 'sweetalert2'
-
-
+import { showToast } from '../toast'
 const Delete = ({location, history}) => {
     const { id: _id } = location.state
     const deleteNote = () => {
         Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to recover this note!",
+            text: "You won't be able to recover this note",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
@@ -21,13 +20,7 @@ const Delete = ({location, history}) => {
                     headers: {'Content-Type': 'application/json'}
                 }).then(res => res.json()).then(console.log)
                 .catch(console.log)
-
-                Swal.fire(
-                    'Deleted!',
-                    'Your note has been deleted.',
-                    'success'
-                )
-                
+                showToast('info', 'Note deleted successfully')
                 history.push('/')
                 
             } else if (result.isDismissed) {

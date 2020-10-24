@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useAppState } from './AppContext'
 import close from '../assets/images/close.png'
+import { showToast } from '../toast'
 
 const Modal = ({ history, location }) => {
 
@@ -18,6 +19,11 @@ const Modal = ({ history, location }) => {
         .catch(console.log)
         
         e.target.reset()
+        if (location.state.message === 'Add a Note') {
+            showToast('success', 'Note added successfully')
+        } else {
+            showToast('success', 'Note edited successfully')
+        }
         closeModal()
     }
 
