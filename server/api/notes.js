@@ -28,19 +28,24 @@ router.post('/', async (req, res, next) => {
 })
 
 router.put('/:id', async (req, res) => {
-    const { id } = req.params
-    const newInfo = req.body
-    await Note.updateOne({_id: id}, {$set: newInfo}, {upsert: true})
-    res.json({
-        message: 'Note updated',
-        new_info: newInfo
-    })
+    try {
+        const { id } = req.params
+        const newInfo = req.body
+        await Note.updateOne({_id: id}, {$set: newInfo}, {upsert: true})
+        res.json({
+            message: 'Note updated',
+            new_info: newInfo
+        })
+    } catch (error) {
+        next(error)
+    }
 })
 
 router.delete('/:id', async (req, res, next) => {
     try {
         const { id } = req.params
         const deletedNote = await Note.findByIdAndDelete(id)
+        if (!deletedNote) return next()
         res.json({
             message: 'Note deleted',
             deletedNote

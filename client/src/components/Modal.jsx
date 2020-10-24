@@ -49,6 +49,7 @@ const Modal = ({ history, location }) => {
                     </label>
                     
                     <input
+                    defaultValue={location.state.title}
                     onChange={handleChange}
                     name='title'
                     className='input'
@@ -62,6 +63,7 @@ const Modal = ({ history, location }) => {
                     </label>
                     
                     <input
+                    defaultValue={location.state.category}
                     onChange={handleChange}
                     name='category'
                     className='input'
@@ -75,7 +77,9 @@ const Modal = ({ history, location }) => {
                     onChange={handleChange}
                     name='content'
                     id="content"
-                    rows="10">
+                    rows="10"
+                    defaultValue={location.state.content}>
+
                     </textarea>
                     
                     <button type="submit">{location.state.message}</button>
