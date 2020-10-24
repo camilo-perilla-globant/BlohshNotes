@@ -31,6 +31,8 @@ const NoteContainer = () => {
         return note[query].toLowerCase().includes(searchTerm.toLowerCase())
     })
     .filter(note => note.category.includes(currentCategory))
+    .map(note => ({...note, date: Date.parse(note.updatedAt)}))
+    .sort((a, b) => b.date - a.date)
 
     return (
         <div className='grid-container'>
