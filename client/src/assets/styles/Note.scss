@@ -7,6 +7,7 @@
 .note__body {
     @extend .border-basic;
     padding: 0.875rem;
+    color: var(--text-color);
     transition: transform 0.3s ease;
     &:hover {
         transform: translate(-12px, -12px);
@@ -18,21 +19,20 @@
 }
 
 .note__title {
-    font-weight: bold;
-    font-size: 1.1rem;
+    font-weight: 700;
     font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: var(--color-text);
+    margin-bottom: 0.25rem;
+    color: var(--border-color);
 }
 
 .note__category {
-    font-weight: 500;
-    font-size: 0.875;
+    font-weight: 400;
+    font-size: 0.875rem;
     margin-bottom: 1rem;
 }
 .note__content {
-    font-size: 1rem;
-    font-weight: 400;
+    font-size: 1.1rem;
+    font-weight: 500;
     margin-bottom: 1rem;
 }
 
@@ -54,6 +54,17 @@
 .note__edit {
     @include option(#99f3bd, $color: #276749);
     margin-right: 0.75rem;
+}
+
+.note__timestamps {
+    margin-top: 0.5rem;
+    p {
+        margin: 0;
+        font-weight: 300;
+    }
+    p:first-child {
+        margin-bottom: 0.25rem;
+    }
 }
 
 .note__bg {

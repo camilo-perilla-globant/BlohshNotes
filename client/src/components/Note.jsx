@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import {useAppState} from './AppContext'
+import { format } from 'timeago.js'
 
 
 const Note = (props) => {
@@ -47,7 +48,10 @@ const Note = (props) => {
                         Delete
                     </Link>
                 </div>
-                <div className="note__timestamps"></div>
+                <div className="note__timestamps">
+                    <p>Updated {format(updatedAt)}</p>
+                    <p>Created {format(createdAt)}</p>
+                </div>
             </div>
             
             <div className="note__bg"></div>
