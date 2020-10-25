@@ -7,6 +7,7 @@ import Modal from './Modal'
 import Delete from './Delete'
 import { AppStateProvider } from './AppContext'
 import { BrowserRouter, Switch, Route} from 'react-router-dom'
+import Register from './Register'
 
 const App = () => {
     return (
@@ -17,8 +18,9 @@ const App = () => {
                 
                 <Switch>
                     <Route exact path='/add' component={Modal}/>
-                    <Route exact path='/delete' component={Delete}/>
                     <Route exact path='/edit' component={Modal}/>
+                    <Route exact path='/delete' component={Delete}/>
+                    <Route exact path='/register' component={Register}/>
                     <Route exact path='/' render={() => (
                         <Scroll>
                             <Container />
