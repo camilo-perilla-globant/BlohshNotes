@@ -8,6 +8,7 @@ import Delete from './Delete'
 import { AppStateProvider } from './AppContext'
 import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Register from './Register'
+import Login from './Login'
 
 const App = () => {
     return (
@@ -21,6 +22,7 @@ const App = () => {
                     <Route exact path='/edit' component={Modal}/>
                     <Route exact path='/delete' component={Delete}/>
                     <Route exact path='/register' component={Register}/>
+                    <Route exact path='/login' component={Login}/>
                     <Route exact path='/' render={() => (
                         <Scroll>
                             <Container />
