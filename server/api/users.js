@@ -2,12 +2,8 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
 
-router.get('/', async (req, res) => {
-    const users = await User.find()
-    res.json({
-        message: 'List of users',
-        data: users
-    })
+router.post('/sign-in', async (req, res) => {
+    
 })
 
 router.post('/', async (req, res, next) => {
@@ -51,12 +47,8 @@ router.post('/', async (req, res, next) => {
             
         } catch (error) {
             next(error) 
-        }
-        
-        
+        } 
     }
-
-
 })
 
 
