@@ -2,9 +2,10 @@ const passport = require('passport')
 const { Strategy, ExtractJwt } = require('passport-jwt')
 
 const User = require('../models/User')
-
+require('dotenv').config()
+const secret = process.env.SECRET
 passport.use(new Strategy({
-    secretOrKey: process.env.SECRET,
+    secretOrKey: secret,
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
 }, async (tokenPayload, done) => {
     const { email } = tokenPayload

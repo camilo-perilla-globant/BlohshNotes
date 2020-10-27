@@ -59,7 +59,7 @@ router.post('/sign-in', async (req, res, next) => {
 
 
 //Create user
-router.post('/', async (req, res, next) => {
+router.post('/sign-up', async (req, res, next) => {
     const errors = []
     const { username, email, password, confirm_password } = req.body
     const duplicate = await User.findOne({email: email})

@@ -2,7 +2,10 @@ const express = require('express')
 const router = express.Router()
 const Note = require('../models/Note')
 
-router.get('/', async (req, res, next) => {
+const passport = require('passport')
+require('../auth/jsonWebToken')
+
+router.get('/', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
     try {
         const notes = await Note.find({})
         if (!notes) return next()
@@ -15,7 +18,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', passport.authenticate('jwt', { session: false }),async (req, res, next) => {
     try {
         const newNote = new Note(req.body)
         await newNote.save()
@@ -27,7 +30,7 @@ router.post('/', async (req, res, next) => {
     }
 })
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', passport.authenticate('jwt', { session: false }),async (req, res) => {
     try {
         const { id } = req.params
         const newInfo = req.body
@@ -41,7 +44,9 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id',
+passport.authenticate('jwt', { session: false }),
+async (req, res, next) => {
     try {
         const { id } = req.params
         const deletedNote = await Note.findByIdAndDelete(id)
