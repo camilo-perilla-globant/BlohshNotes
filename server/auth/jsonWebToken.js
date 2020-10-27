@@ -1,9 +1,11 @@
 const passport = require('passport')
 const { Strategy, ExtractJwt } = require('passport-jwt')
+const boom = require('@hapi/boom')
 
 const User = require('../models/User')
 require('dotenv').config()
 const secret = process.env.SECRET
+
 passport.use(new Strategy({
     secretOrKey: secret,
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken()
@@ -12,7 +14,8 @@ passport.use(new Strategy({
 
     try {
         const user = await User.findOne({email: email})
-        if (!user) return done(null, false, { message: 'No user found'})
+        if (!user) return done(boom.unauthorized(), false,
+        { message: 'No user found' })
 
         delete user.password
         done(null, user)

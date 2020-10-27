@@ -3,6 +3,7 @@ const router = express.Router()
 const passport = require('passport')
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
+const boom = require('@hapi/boom')
 
 //basic 
 require('../auth/basic')
@@ -24,7 +25,7 @@ router.post('/sign-in', async (req, res, next) => {
     passport.authenticate('basic', (error, user) => {
         try {
             if (error || !user) {
-                next(error)
+                next(boom.unauthorized())
             }
 
             req.login(user, { session: false }, async (err) => {
@@ -36,7 +37,6 @@ router.post('/sign-in', async (req, res, next) => {
                     username,
                     email
                 }
-
                 const token = jwt.sign(payload, process.env.SECRET, {
                     expiresIn: '20m'
                 })
@@ -49,7 +49,6 @@ router.post('/sign-in', async (req, res, next) => {
                         email
                     }
                 })
-
             })
         } catch (error) {
             next(error)
