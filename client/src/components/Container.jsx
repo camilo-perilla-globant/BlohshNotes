@@ -8,7 +8,9 @@ const NoteContainer = () => {
     
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:3000/api/v1/notes')
+            fetch('http://localhost:3000/api/v1/notes', {
+                headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}`}
+            })
             .then(res => res.json()).then(data => {
                 setNotes(data.info)
                 dispatch({
