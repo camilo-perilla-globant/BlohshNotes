@@ -34,6 +34,11 @@ const appStateReducer = (state, action) => {
                 ...state,
                 query: action.payload
             }
+        case 'set-user':
+            return {
+                ...state,
+                user: action.payload
+            }
         default:
             return state
     }
@@ -44,7 +49,8 @@ const initialState = {
     currentCategory: '',
     notes: [],
     searchTerm: '',
-    query: 'title'
+    query: 'title',
+    user: JSON.parse(localStorage.getItem('user')) || {}
 
 }
 

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { showToast } from '../toast'
 import axios from 'axios'
+import { useAppState } from '../components/AppContext'
 
 const Login = ({history}) => {
     const login = useRef(null)
@@ -11,7 +12,7 @@ const Login = ({history}) => {
     }
 
     const [user, setUser] = useState({})
-
+    const [state, dispatch] = useAppState()
     const handleSubmit = async e => {
         e.preventDefault()
         try {
@@ -26,6 +27,11 @@ const Login = ({history}) => {
             const { data } = res
             if (data.token) {
                 localStorage.setItem('token', data.token)
+                localStorage.setItem('user', JSON.stringify(data.user))
+                dispatch({
+                    type: 'set-user',
+                    payload: data.user
+                })
                 showToast('success', `Welcome back ${data.user.username} 😁`)
                 history.push('/')
             }

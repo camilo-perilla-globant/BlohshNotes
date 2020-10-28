@@ -12,7 +12,10 @@ const Modal = ({ history, location }) => {
         e.preventDefault()
         fetch(`http://localhost:3000/api/v1/notes${location.state.id}`, {
             method: location.state.method,
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
             body: JSON.stringify(note)
         })
         .then(res => res.json()).then(console.log)
