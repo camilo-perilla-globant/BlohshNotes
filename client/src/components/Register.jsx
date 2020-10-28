@@ -1,7 +1,15 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import {showToast} from '../toast'
 
 const Register = ({history}) => {
+    const register = useRef(null)
+    const closeModal = e => {
+        console.log(e.target)
+        console.log(register.current)
+        if (e.target === register.current) {
+            history.push('/')
+        }
+    }
 
     const handleSubmit = async e => {
         e.preventDefault()
@@ -31,9 +39,9 @@ const Register = ({history}) => {
     }
 
     return (
-        <div className='register'>
+        <div className='register' ref={register} onClick={closeModal}>
             <div className="register__content">
-
+                <h3>Create an account</h3>
                 <form onSubmit={handleSubmit} className='register__form'>
                 
                     <label htmlFor="username">Username</label>

@@ -1,0 +1,11 @@
+.register {
+    @extend .login;
+}
+
+.register__content {
+    @extend .login__content;
+}
+
+.register__form {
+    @extend .login__form;
+}
