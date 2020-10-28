@@ -12,6 +12,7 @@ import Login from './Login'
 import Notes from './Notes'
 
 const App = () => {
+    const user = localStorage.getItem('user') || false
     return (
         <AppStateProvider>
             <BrowserRouter>
@@ -19,8 +20,11 @@ const App = () => {
                 <Search />
                 
                 <Switch>
-                    <Route exact path='/add' component={Modal}/>
-                    <Route exact path='/edit' component={Modal}/>
+                    <Route exact path='/add'
+                    component={user ? Modal : Login}/>
+                    <Route exact path='/edit'
+                    component={user ? Modal : Login}/>
+                    
                     <Route exact path='/delete' component={Delete}/>
                     <Route exact path='/register' component={Register}/>
                     <Route exact path='/login' component={Login}/>
