@@ -50,7 +50,7 @@ const initialState = {
     notes: [],
     searchTerm: '',
     query: 'title',
-    user: JSON.parse(localStorage.getItem('user')) || {}
+    user: JSON.parse(localStorage.getItem('user')) || undefined
 
 }
 
