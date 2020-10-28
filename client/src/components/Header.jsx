@@ -16,7 +16,6 @@ const Header = () => {
             cancelButtonText: 'No, go back',
             confirmButtonText: 'Yes, log me out'
         }).then(value => {
-            // console.log(value)
             if (value.isConfirmed) {
                 showToast('info', 'You have logged out')
                 localStorage.clear()
