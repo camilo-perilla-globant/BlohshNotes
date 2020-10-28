@@ -10,6 +10,7 @@ import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Register from './Register'
 import Login from './Login'
 import Notes from './Notes'
+import Home from './Home'
 
 const App = () => {
     const user = localStorage.getItem('user') || false
@@ -28,7 +29,7 @@ const App = () => {
                     <Route exact path='/delete' component={Delete}/>
                     <Route exact path='/register' component={Register}/>
                     <Route exact path='/login' component={Login}/>
-                    <Route exact path='/' component={Notes}/>
+                    <Route exact path='/' component={user ? Notes : Home}/>
                 </Switch>
             </BrowserRouter>
         </AppStateProvider>
