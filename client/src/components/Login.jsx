@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { showToast } from '../toast'
 import axios from 'axios'
 import { useAppState } from '../components/AppContext'
+import { Link } from 'react-router-dom'
 
 const Login = ({history}) => {
     const login = useRef(null)
@@ -65,8 +66,12 @@ const Login = ({history}) => {
                     onChange={handleInputChange}/>
 
                     <button type="submit">Login</button>
-
                 </form>
+                <p className='login__signup'>No account yet? 
+                    <Link to='/register'>
+                        Create an account
+                    </Link>
+                </p>
             </div>
         </div>
     )

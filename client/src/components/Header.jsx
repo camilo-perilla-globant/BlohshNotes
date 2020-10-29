@@ -9,15 +9,15 @@ const Header = () => {
 
     function logOut() {
         Swal.fire({
-            title: 'You are about to log out',
+            title: 'Log out of Blohsh Notes',
             text: 'Are you sure?',
             showCancelButton: true,
             icon: 'warning',
-            cancelButtonText: 'No, go back',
-            confirmButtonText: 'Yes, log me out'
+            cancelButtonText: 'Cancel',
+            confirmButtonText: 'Log out'
         }).then(value => {
             if (value.isConfirmed) {
-                showToast('info', 'You have logged out')
+                showToast('info', 'You have been logged out')
                 localStorage.clear()
                 dispatch({
                     type: 'set-user',

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import {showToast} from '../toast'
+import { Link } from 'react-router-dom'
 
 const Register = ({history}) => {
     const register = useRef(null)
@@ -63,6 +64,11 @@ const Register = ({history}) => {
                     
                     <button type="submit">Register</button>
                 </form>
+                <p className='register__signin'>Already registered?
+                    <Link to='/login'>
+                        Log in
+                    </Link>
+                </p>
             </div>
         </div>
     )

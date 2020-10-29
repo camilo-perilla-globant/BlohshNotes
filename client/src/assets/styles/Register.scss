@@ -9,3 +9,7 @@
 .register__form {
     @extend .login__form;
 }
+
+.register__signin {
+    @extend .login__signup;
+}
