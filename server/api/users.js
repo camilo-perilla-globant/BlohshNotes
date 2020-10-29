@@ -38,7 +38,7 @@ router.post('/sign-in', async (req, res, next) => {
                     email
                 }
                 const token = jwt.sign(payload, process.env.SECRET, {
-                    expiresIn: '20m'
+                    expiresIn: '15m'
                 })
 
                 return res.status(200).json({

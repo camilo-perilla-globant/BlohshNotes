@@ -21,7 +21,8 @@ const App = () => {
                 <Route exact path='/edit'
                 component={user ? Modal : Login}/>
                 
-                <Route exact path='/delete' component={Delete}/>
+                <Route exact path='/delete'
+                component={user ? Delete : Login}/>
                 <Route exact path='/register' component={Register}/>
                 <Route exact path='/login' component={Login}/>
                 <Route exact path='/' component={user ? Notes : Home}/>

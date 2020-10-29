@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react'
 import Note from './Note'
 import { useAppState } from './AppContext'
+import { useHistory } from 'react-router-dom'
 
 const NoteContainer = () => {
     const [state, dispatch] = useAppState()
     const [notes, setNotes] = useState([])
-    
+    const history = useHistory()
     useEffect(() => {
         setTimeout(() => {
             fetch('http://localhost:3000/api/v1/notes/' + state.user.id, {
@@ -22,7 +23,16 @@ const NoteContainer = () => {
                     payload: data.info
                 })
             })
-            .catch(console.log)
+            .catch(err => {
+                console.log(err)
+                console.log('Token is no longer valid')
+                dispatch({
+                    type: 'set-user',
+                    payload: undefined
+                })
+                localStorage.clear()
+                history.push('/login')
+            })
         }, 250)
 
     }, [])

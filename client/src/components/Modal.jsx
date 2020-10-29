@@ -21,7 +21,16 @@ const Modal = ({ history, location }) => {
             body: JSON.stringify(note)
         })
         .then(res => res.json()).then(console.log)
-        .catch(console.log)
+        .catch(err => {
+            console.log(err)
+            console.log('Token is no longer valid')
+            dispatch({
+                type: 'set-user',
+                payload: undefined
+            })
+            localStorage.clear()
+            history.push('/login')
+        })
         
         e.target.reset()
         if (location.state.message === 'Add a Note') {
