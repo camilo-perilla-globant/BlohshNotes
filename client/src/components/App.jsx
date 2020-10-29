@@ -1,9 +1,7 @@
 import React from 'react'
 import Header from './Header'
-import Search from './Search'
 import Modal from './Modal'
 import Delete from './Delete'
-import { AppStateProvider } from './AppContext'
 import { BrowserRouter, Switch, Route} from 'react-router-dom'
 import Register from './Register'
 import Login from './Login'
@@ -17,8 +15,6 @@ const App = () => {
     return (
         <BrowserRouter>
             <Header />
-            <Search />
-            
             <Switch>
                 <Route exact path='/add'
                 component={user ? Modal : Login}/>
