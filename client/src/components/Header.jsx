@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useAppState } from './AppContext'
 import { showToast } from '../toast'
 import Swal from 'sweetalert2'
+import Dropdown from './Dropdown'
+import arrow from '../assets/images/down-arrow.png'
 
 const Header = () => {
     const [state, dispatch] = useAppState()
+    const [showMenu, setShowMenu] = useState(false)
 
     function logOut() {
         Swal.fire({
@@ -25,7 +28,6 @@ const Header = () => {
                 })
             }
         })
-
     }
     return (
         <header>
@@ -47,9 +49,18 @@ const Header = () => {
                         category: null,
                         id: ''}
                     }}>Add Note</Link>
-                    <a href='#' onClick={logOut}>
-                        Log Out
-                    </a>
+
+                    <img
+                    onClick={() => setShowMenu(!showMenu)}
+                    src={arrow}
+                    alt="arrow"/>
+
+                    { showMenu && <Dropdown>
+                        <a href='#' onClick={logOut} className='header__options'>
+                            Log Out
+                        </a>  
+                    </Dropdown> }
+                    
                     </>
                     :
                     <Link to='/login' className='border-basic'>Log In</Link>
