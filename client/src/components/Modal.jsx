@@ -4,9 +4,11 @@ import close from '../assets/images/close.png'
 import { showToast } from '../toast'
 
 const Modal = ({ history, location }) => {
-
-    const [note, setNote] = useState({})
     const [state, dispatch] = useAppState()
+
+    const [note, setNote] = useState({
+        userID: state.user.id
+    })
 
     const handleSubmit = e => {
         e.preventDefault()

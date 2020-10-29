@@ -5,9 +5,11 @@ const Note = require('../models/Note')
 const passport = require('passport')
 require('../auth/jsonWebToken')
 
-router.get('/', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
+router.get('/:id', passport.authenticate('jwt', { session: false }), async (req, res, next) => {
+    const { id } = req.params
+    console.log(id)
     try {
-        const notes = await Note.find({})
+        const notes = await Note.find({userID: id})
         if (!notes) return next()
         res.json({
             message: 'List of notes',

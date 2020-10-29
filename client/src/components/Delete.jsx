@@ -17,7 +17,10 @@ const Delete = ({location, history}) => {
             if (result.isConfirmed) {
                 fetch(`http://localhost:3000/api/v1/notes/${_id}`, {
                     method: 'DELETE',
-                    headers: {'Content-Type': 'application/json'}
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('token')}`
+                    }
                 }).then(res => res.json()).then(console.log)
                 .catch(console.log)
                 showToast('info', 'Note deleted successfully')
