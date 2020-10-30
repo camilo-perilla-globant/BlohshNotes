@@ -21,10 +21,16 @@ module.exports = {
         })
     ],
     
-    // optimization: {
-    //     minimize: true,
-    //     minimizer: [new TerserPlugin()],
-    // },
+    optimization: {
+        minimize: true,
+        minimizer: [
+            new TerserPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true
+            })
+        ]
+    },
     
     resolve: {
         extensions: ['.jsx', '.js']
