@@ -21,10 +21,10 @@ module.exports = {
         })
     ],
     
-    optimization: {
-        minimize: true,
-        minimizer: [new TerserPlugin()],
-    },
+    // optimization: {
+    //     minimize: true,
+    //     minimizer: [new TerserPlugin()],
+    // },
     
     resolve: {
         extensions: ['.jsx', '.js']
