@@ -18,7 +18,7 @@ const Login = ({history}) => {
         e.preventDefault()
         try {
             const res = await axios({
-                url: 'http://localhost:3000/api/v1/users/sign-in',
+                url: '/api/v1/users/sign-in',
                 method: 'POST',
                 auth: {
                     username: user.email,
