@@ -1,6 +1,9 @@
 {
-  "name": "webpack-base",
+  "name": "blohsh-notes",
   "version": "1.0.0",
+  "engines": {
+    "node": "12.16.1"
+  },
   "description": "",
   "private": true,
   "scripts": {
