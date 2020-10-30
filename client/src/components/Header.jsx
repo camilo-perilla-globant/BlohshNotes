@@ -38,7 +38,7 @@ const Header = () => {
             <div className="header__dropdown">
                 { state.user ? <>
                     <Link
-                    className='border-basic'
+                    // className='border-basic'
                     to={{
                         pathname:'/add',
                         state: {
@@ -56,9 +56,12 @@ const Header = () => {
                     alt="arrow"/>
 
                     { showMenu && <Dropdown>
-                        <a href='#' onClick={logOut} className='header__options'>
-                            Log Out
-                        </a>  
+                        <div className='header__options'>
+                            <a href='#' onClick={logOut}>
+                                Log out
+                            </a>
+                            <a href="#">Options</a>
+                        </div>
                     </Dropdown> }
                     
                     </>
