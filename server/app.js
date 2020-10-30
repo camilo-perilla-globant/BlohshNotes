@@ -27,6 +27,10 @@ app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api/v1', api)
 
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public/index.html'))
+})
+
 app.use(notFound)
 app.use(logError)
 app.use(errorHandler)
