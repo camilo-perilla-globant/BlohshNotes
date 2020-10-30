@@ -3,8 +3,7 @@ header {
     justify-content: space-between;
     align-items: center;
     color: var(--text-color);
-    padding: 0.75rem;
-    position: relative;
+    padding: 1rem;
 }
 
 .header__logo {
@@ -17,20 +16,36 @@ header {
     font-weight: 500;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    width: 150px;
+    position: relative;
+    & > a {
+        padding: 0.5rem;
+    }
     img {
         cursor: pointer;
+        transform: scale(0.7);
     }
 }
 
 .header__options {
     position: absolute;
-    top: calc(100% - 0.75rem);
-    right: 0.75rem;
-    width: 150px;
-    padding: 0.75rem;
+    top: 100%;
+    right: 0;
+    left: 0;
+    padding: 0.5rem;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
     animation: slideDown 0.3s ease;
+    background-color: var(--primary-color);
+    z-index: 1;
+    a {
+        transition: transform 0.3s ease;
+    }
+    a:first-child {
+        margin-bottom: 0.6rem;
+    }
+    a:hover {
+        transform: translateX(0.25rem);
+    }
 }
 
 @keyframes slideDown {

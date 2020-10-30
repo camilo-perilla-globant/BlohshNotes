@@ -20,6 +20,7 @@ const Header = () => {
             confirmButtonText: 'Log out'
         }).then(value => {
             if (value.isConfirmed) {
+                setShowMenu(false)
                 showToast('info', 'You have been logged out')
                 localStorage.clear()
                 dispatch({
@@ -38,7 +39,6 @@ const Header = () => {
             <div className="header__dropdown">
                 { state.user ? <>
                     <Link
-                    className='border-basic'
                     to={{
                         pathname:'/add',
                         state: {
@@ -56,14 +56,17 @@ const Header = () => {
                     alt="arrow"/>
 
                     { showMenu && <Dropdown>
-                        <a href='#' onClick={logOut} className='header__options'>
-                            Log Out
-                        </a>  
+                        <div className='header__options'>
+                            <a href='#' onClick={logOut}>
+                                Log out
+                            </a>
+                            <a href="#">Options</a>
+                        </div>
                     </Dropdown> }
                     
                     </>
                     :
-                    <Link to='/login' className='border-basic'>Log In</Link>
+                    <Link to='/login' className='border-basic'>Log In/Register</Link>
                 }
             </div>
         </header>
