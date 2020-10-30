@@ -9,7 +9,7 @@ const NoteContainer = () => {
     const history = useHistory()
     useEffect(() => {
         setTimeout(() => {
-            fetch('http://localhost:3000/api/v1/notes/' + state.user.id, {
+            fetch('/api/v1/notes/' + state.user.id, {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}`}
             })
             .then(res => res.json()).then(data => {

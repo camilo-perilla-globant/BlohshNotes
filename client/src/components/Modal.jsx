@@ -12,8 +12,8 @@ const Modal = ({ history, location }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        fetch(`http://localhost:3000/api/v1/notes${location.state.id}`, {
-            method: location.state.method,
+        fetch(`/api/v1/notes${location.state.id}`, {
+            method: location.state.method, //PUSH / POST
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
