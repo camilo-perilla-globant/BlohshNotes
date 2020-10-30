@@ -1,6 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const TerserPlugin = require('terser-webpack-plugin')
+
 
 module.exports = {
     mode: process.env.NODE_ENV,
@@ -14,9 +16,14 @@ module.exports = {
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './client/public/index.html',
+            favicon: './client/public/post-it.png',
             inject: true
         })
     ],
+    optimization: {
+        minimize: true,
+        minimizer: [new TerserPlugin()]
+    },
     
     resolve: {
         extensions: ['.jsx', '.js']

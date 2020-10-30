@@ -29,7 +29,9 @@ const Search = () => {
                 name='category'
                 onChange={handleInputChange}>
                     <option value="" defaultValue>All</option>
-                    {state.categories.map((c, i) => (
+                    {state.categories
+                    .filter((c, i) => state.categories.indexOf(c) === i)
+                    .map((c, i) => (
                         <option value={c} key={i}>
                             {c}
                         </option>
