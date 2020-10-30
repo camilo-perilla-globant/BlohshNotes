@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAppState } from './AppContext'
+import search from '../assets/images/search.svg'
 const Search = () => {
     const [state, dispatch] = useAppState()
 
@@ -15,6 +16,7 @@ const Search = () => {
         <div className='search'>
             <div className="search__field search__field--term">
                 <form>
+                    <img src={search} alt="search icon"/>
                     <input
                     name='search_term'
                     onChange={handleInputChange}
