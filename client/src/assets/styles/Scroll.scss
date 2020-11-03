@@ -1,7 +1,9 @@
 .scroll {
     overflow-y: scroll;
-    height: 600px;
-    padding-bottom: 2rem;
+    height: 300px;
+    @media (min-width: 768px) {
+        height: 480px;
+    }
     &::-webkit-scrollbar {
         display: none;
     }

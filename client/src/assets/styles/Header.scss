@@ -18,11 +18,18 @@ header {
     align-items: center;
     position: relative;
     & > a {
-        padding: 0.5rem;
+        padding: 0.25rem;
     }
     img {
+        display: block;
+        padding: 0.5rem;
         cursor: pointer;
         transform: scale(0.7);
+        transition: all 0.3s ease;
+        border-radius: 50%;
+        &:hover {
+            background-color: var(--hover-color);
+        }
     }
 }
 
@@ -63,7 +70,7 @@ header {
     color: var(--text-color);
     padding: 0.5rem 1rem;
     background: #ffffff;
-    border-radius: 0.25rem;
+    border-radius: 10px;
     font-size: 1rem;
     border: 3px solid var(--border-color);
     transition: background-color 0.2s ease;

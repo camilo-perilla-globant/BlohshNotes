@@ -49,7 +49,14 @@
         background-color: #fff;
     }
     form {
+        position: relative;
         width: 100%;
+        img {
+            position: absolute;
+            width: 20px;
+            top: 8px;
+            right: 2px;
+        }
         input {
             padding: 0.5rem 0;
             font-size: 1rem;
@@ -57,10 +64,6 @@
             color: var(--text-color);
             width: 100%;
             display: block;
-            background-image: url('https://uploads-ssl.webflow.com/5ea8febebff98adb1065a861/5eb309d676a0c0ed1911829a_search.svg');
-            background-position: 100% 50%;
-            background-repeat: no-repeat;
-            background-size: 20px;
             border: none;
             background-color: transparent;
             &:focus {

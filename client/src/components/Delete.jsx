@@ -15,7 +15,7 @@ const Delete = ({location, history}) => {
         })
         .then(result => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/api/v1/notes/${_id}`, {
+                fetch(`/api/v1/notes/${_id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

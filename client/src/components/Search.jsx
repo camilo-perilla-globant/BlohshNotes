@@ -1,5 +1,6 @@
 import React from 'react'
 import { useAppState } from './AppContext'
+import search from '../assets/images/search.svg'
 const Search = () => {
     const [state, dispatch] = useAppState()
 
@@ -15,6 +16,7 @@ const Search = () => {
         <div className='search'>
             <div className="search__field search__field--term">
                 <form>
+                    <img src={search} alt="search icon"/>
                     <input
                     name='search_term'
                     onChange={handleInputChange}
@@ -29,7 +31,9 @@ const Search = () => {
                 name='category'
                 onChange={handleInputChange}>
                     <option value="" defaultValue>All</option>
-                    {state.categories.map((c, i) => (
+                    {state.categories
+                    .filter((c, i) => state.categories.indexOf(c) === i)
+                    .map((c, i) => (
                         <option value={c} key={i}>
                             {c}
                         </option>
