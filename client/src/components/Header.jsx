@@ -57,10 +57,10 @@ const Header = () => {
 
                     { showMenu && <Dropdown>
                         <div className='header__options'>
+                            <a href="#">Options</a>
                             <a href='#' onClick={logOut}>
                                 Log out
                             </a>
-                            <a href="#">Options</a>
                         </div>
                     </Dropdown> }
                     

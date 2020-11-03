@@ -18,13 +18,18 @@ header {
     align-items: center;
     position: relative;
     & > a {
-        padding: 0.5rem;
+        padding: 0.25rem;
     }
     img {
         display: block;
         padding: 0.5rem;
         cursor: pointer;
         transform: scale(0.7);
+        transition: all 0.3s ease;
+        border-radius: 50%;
+        &:hover {
+            background-color: var(--hover-color);
+        }
     }
 }
 
