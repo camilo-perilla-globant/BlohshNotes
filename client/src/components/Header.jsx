@@ -38,17 +38,9 @@ const Header = () => {
 
             <div className="header__dropdown">
                 { state.user ? <>
-                    <Link
-                    to={{
-                        pathname:'/add',
-                        state: {
-                        message: 'Add a Note',
-                        method: 'POST',
-                        title: null,
-                        content: null,
-                        category: null,
-                        id: ''}
-                    }}>Add Note</Link>
+                    <Link to='/add'>
+                        Add Note
+                    </Link>
 
                     <img
                     onClick={() => setShowMenu(!showMenu)}
