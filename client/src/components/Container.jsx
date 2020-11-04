@@ -39,7 +39,7 @@ const NoteContainer = () => {
 
     const { searchTerm, currentCategory, query } = state
 
-    const filteredNotes = notes.filter(note => {
+    const filteredNotes = state.notes.filter(note => {
         return note[query].toLowerCase().includes(searchTerm.toLowerCase())
     })
     .filter(note => note.category.includes(currentCategory))

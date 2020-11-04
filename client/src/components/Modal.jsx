@@ -3,7 +3,7 @@ import { useAppState } from './AppContext'
 import close from '../assets/images/close.png'
 import { showToast } from '../toast'
 
-const Modal = ({ history, location }) => {
+const Modal = ({ history }) => {
     const [state, dispatch] = useAppState()
 
     const [note, setNote] = useState({
@@ -12,8 +12,8 @@ const Modal = ({ history, location }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        fetch(`/api/v1/notes${location.state.id}`, {
-            method: location.state.method, //PUSH / POST
+        fetch('/api/v1/notes/', {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('token')}`
@@ -33,11 +33,7 @@ const Modal = ({ history, location }) => {
         })
         
         e.target.reset()
-        if (location.state.message === 'Add a Note') {
-            showToast('success', 'Note added successfully')
-        } else {
-            showToast('success', 'Note edited successfully')
-        }
+        showToast('success', 'Note added successfully')
         closeModal()
     }
 
@@ -56,7 +52,7 @@ const Modal = ({ history, location }) => {
     return (
         <div className='modal'>
             <div className="modal__content">
-                <h3>{location.state.message}</h3>
+                <h3>Add Note</h3>
                 <img
                 onClick={closeModal}
                 className='modal__close'
@@ -71,7 +67,6 @@ const Modal = ({ history, location }) => {
                     <input
                     autoComplete='off'
                     autoFocus
-                    defaultValue={location.state.title}
                     onChange={handleChange}
                     name='title'
                     className='input'
@@ -86,7 +81,6 @@ const Modal = ({ history, location }) => {
                     
                     <input
                     autoComplete='off'
-                    defaultValue={location.state.category}
                     onChange={handleChange}
                     name='category'
                     className='input'
@@ -101,12 +95,11 @@ const Modal = ({ history, location }) => {
                     onChange={handleChange}
                     name='content'
                     id="content"
-                    rows="10"
-                    defaultValue={location.state.content}>
+                    rows="10">
 
                     </textarea>
                     
-                    <button type="submit">{location.state.message}</button>
+                    <button type="submit">Add Note</button>
                 </form>
             </div>
         </div>
