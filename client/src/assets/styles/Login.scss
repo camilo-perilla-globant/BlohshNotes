@@ -37,8 +37,8 @@
     input {
         margin-bottom: 1rem;
         border: 2px solid var(--border-color);
-        border-radius: 0.25rem;
-        padding: 0.5rem 1rem;
+        border-radius: 10px;
+        padding: 0.5rem;
         outline: none;
         font-family: 'Ubuntu';
         font-size: 1rem;
@@ -50,10 +50,11 @@
     button {
         margin-top: 0.25rem;
         padding: 0.5rem 1rem;
-        border-radius: 0.25rem;
+        border-radius: 10px;
         border: 2px solid var(--hover-color);
         font-family: 'Ubuntu';
         font-size: 1rem;
+        font-weight: 500;
         cursor: pointer;
         background-color: #fff;
         transition: background 0.3s ease;

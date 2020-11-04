@@ -46,20 +46,20 @@ const Register = ({history}) => {
                 <form onSubmit={handleSubmit} className='register__form'>
                 
                     <label htmlFor="username">Username</label>
-                    <input type="text" placeholder='Username' name='username'
+                    <input type="text" name='username'
                     onChange={handleInputChange}/>
                     
                     <label htmlFor="email">Email</label>
-                    <input type="email" placeholder='Email' name='email'
+                    <input type="email" name='email'
                     onChange={handleInputChange}/>
 
                     <label htmlFor="password">Password</label>
-                    <input type="password" placeholder='Password'
+                    <input type="password"
                     name='password'
                     onChange={handleInputChange}/>
 
                     <label htmlFor="password2">Confirm Password</label>
-                    <input type="password" placeholder='Password' name='confirm_password'
+                    <input type="password" name='confirm_password'
                     onChange={handleInputChange}/>
                     
                     <button type="submit">Register</button>
