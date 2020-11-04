@@ -59,7 +59,7 @@ const Header = () => {
                     </>
                     :
                     <Link to='/login' className='border-basic'>
-                        Sign in / Sign up
+                        Login / Register
                     </Link>
                 }
             </div>
