@@ -27,28 +27,35 @@
     h3 {
         font-weight: 700;
         font-size: 1.5rem;
+        margin: 0.875rem 0;
     }
     form {
         .input {
             @extend .border-basic;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            font-weight: 500;
+            font-family: 'Ubuntu';
             width: 100%;
-            margin-bottom: 1rem;
-            border-width: 1px;
+            border-radius: 0;
+            border: none;
+            margin-bottom: 0.75rem;
             &:hover {
                 background-color: #fff;
             }
             &:focus {
                 outline: none;
-                border-color: var(--hover-color);
             }
             &::placeholder {
                 font-family: 'Ubuntu';
-                font-size: 0.875rem;
-                font-weight: 300;
+                font-size: 1rem;
+                font-weight: 500;
             }
         }
 
         textarea {
+            padding: 0.5rem 0;
+            border: none;
             width: 100%;
             font-size: 1.3rem;
             @media (min-width: 425px) {
@@ -56,7 +63,7 @@
             }
             &:focus {
                 outline: none;
-                border: 1px solid var(--hover-color);
+                // border: 1px solid var(--hover-color);
             }
         }
         label {

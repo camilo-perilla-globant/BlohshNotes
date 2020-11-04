@@ -64,36 +64,40 @@ const Modal = ({ history, location }) => {
                 alt="Close"/>
 
                 <form onSubmit={handleSubmit}>
-                    <label htmlFor="title">
+                    {/* <label htmlFor="title">
                         Note Title
-                    </label>
+                    </label> */}
                     
                     <input
+                    autoComplete='off'
+                    autoFocus
                     defaultValue={location.state.title}
                     onChange={handleChange}
                     name='title'
                     className='input'
                     type="text"
-                    placeholder='Enter the title of the note'
+                    placeholder='Title'
                     id='title'/>
                     
 
-                    <label htmlFor="category">
+                    {/* <label htmlFor="category">
                         Category
-                    </label>
+                    </label> */}
                     
                     <input
+                    autoComplete='off'
                     defaultValue={location.state.category}
                     onChange={handleChange}
                     name='category'
                     className='input'
                     type="text"
-                    placeholder='i.e JavaScript, Habits, Series to watch'
+                    placeholder='Category'
                     id='category'/>
                     
 
-                    <label htmlFor="content">Content</label>
+                    {/* <label htmlFor="content">Content</label> */}
                     <textarea
+                    placeholder='Content'
                     onChange={handleChange}
                     name='content'
                     id="content"
