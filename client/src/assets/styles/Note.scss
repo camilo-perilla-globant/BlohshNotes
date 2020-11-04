@@ -20,6 +20,9 @@
         .note__title {
             text-decoration: underline;
         }
+        .note__timestamps {
+            opacity: 1;
+        }
     }
 }
 
@@ -37,10 +40,10 @@
     font-weight: 500;
     font-size: 0.875rem;
     margin-bottom: 1rem;
-    padding: 3px 5px;
+    padding: 3px 7px;
     display: inline-block;
     width: fit-content;
-    background-color: #e8e8e8;
+    border: 2px solid #bbbfca;
     border-radius: 12px;
     line-height: 1.25rem;
 }
@@ -71,6 +74,8 @@
 }
 
 .note__timestamps {
+    opacity: 0;
+    transition: opacity 0.3s ease;
     margin-top: 0.5rem;
     p {
         margin: 0;
