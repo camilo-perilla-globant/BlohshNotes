@@ -8,6 +8,7 @@ import Login from './Login'
 import Notes from './Notes'
 import Home from './Home'
 import { useAppState } from './AppContext'
+import Edit from './Edit'
 
 const App = () => {
     const [state, dispatch] = useAppState()
@@ -18,10 +19,13 @@ const App = () => {
             <Switch>
                 <Route exact path='/add'
                 component={user ? Modal : Login}/>
+
                 <Route exact path='/edit'
-                component={user ? Modal : Login}/>
+                component={user ? Edit : Login}/>
+
                 <Route exact path='/delete'
                 component={user ? Delete : Login}/>
+
                 <Route exact path='/register' component={Register}/>
                 <Route exact path='/login' component={Login}/>
             </Switch>
