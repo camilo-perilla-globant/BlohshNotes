@@ -9,6 +9,7 @@
     padding: 0.875rem;
     color: var(--text-color);
     height: 100%;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -33,9 +34,15 @@
 }
 
 .note__category {
-    font-weight: 400;
+    font-weight: 500;
     font-size: 0.875rem;
     margin-bottom: 1rem;
+    padding: 3px 5px;
+    display: inline-block;
+    width: fit-content;
+    background-color: #e8e8e8;
+    border-radius: 12px;
+    line-height: 1.25rem;
 }
 .note__content {
     font-size: 1.1rem;
