@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import {useAppState} from './AppContext'
 import { format } from 'timeago.js'
 import del from '../assets/images/delete.png'
@@ -12,11 +12,25 @@ import photo from '../assets/images/photo.png'
 const Note = (props) => {
     const { title, content, category} = props
     const {_id, createdAt, updatedAt} = props
-    const [state, dispatch] = useAppState()
+    const history = useHistory()
+    
+
+    const editNote = () => {
+        history.push({
+            pathname: '/edit',
+            state: {
+                title,
+                content,
+                category,
+                updatedAt,
+                _id
+            }
+        })
+    }
 
     return (
         <div className='note'>
-            <div className="note__body">
+            <div className="note__body" onClick={editNote}>
                 <div className="node__header">
                     <div className="note__title">
                         {title}
