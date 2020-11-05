@@ -32,12 +32,11 @@
 }
 
 .edit__controls {
-    
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     button {
         border: none;
-        background-color: transparent;
+        color: var(--text-color);
         font-family: 'Ubuntu';
         cursor: pointer;
         padding: 0.5rem 1rem;

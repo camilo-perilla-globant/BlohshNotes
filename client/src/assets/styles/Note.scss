@@ -7,6 +7,7 @@
 .note__body {
     @extend .border-basic;
     padding: 0.875rem;
+    padding-bottom: 0.5rem;
     color: var(--text-color);
     height: 100%;
     cursor: pointer;
@@ -20,7 +21,7 @@
         .note__title {
             text-decoration: underline;
         }
-        .note__timestamps {
+        .note__footer {
             opacity: 1;
         }
     }
@@ -40,12 +41,13 @@
     font-weight: 500;
     font-size: 0.875rem;
     margin-bottom: 1rem;
-    padding: 3px 7px;
+    padding: 3px 6px;
     display: inline-block;
     width: fit-content;
-    border: 2px solid #bbbfca;
+    border: 1px solid #bbbfca;
     border-radius: 12px;
     line-height: 1.25rem;
+    opacity: 0.8;
 }
 .note__content {
     font-size: 1.1rem;
@@ -73,17 +75,41 @@
     margin-right: 0.75rem;
 }
 
-.note__timestamps {
+.note__footer {
     opacity: 0;
     transition: opacity 0.3s ease;
-    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.note__icons {
+    display: flex;
+    align-self: flex-end;
+    .icon {
+        opacity: 0.7;
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+            opacity: 0.8;
+            background-color: rgba(95,99,104,0.157);
+        }
+    }
+}
+
+.note__timestamps {
+    opacity: 0.8;
     p {
         margin: 0;
         font-weight: 300;
         font-size: 0.875rem;
-    }
-    p:first-child {
-        margin-bottom: 0.25rem;
+        &:first-child {
+            margin-bottom: 0.25rem;
+        }
     }
 }
 
