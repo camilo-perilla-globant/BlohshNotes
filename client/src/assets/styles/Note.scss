@@ -32,9 +32,6 @@
     font-size: 1.3rem;
     margin-bottom: 0.25rem;
     color: var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .note__category {
@@ -52,27 +49,7 @@
 .note__content {
     font-size: 1.1rem;
     font-weight: 500;
-    margin-bottom: 1rem;
-}
-
-.note__options {
-    display: flex;
-}
-@mixin option($bgColor, $color: white, $radius: 3px) {
-    padding: 0.5rem 1rem;
-    color: $color;
-    background-color: $bgColor;
-    border-radius: $radius;
-    font-size: 0.875rem;
-}
-
-.note__delete {
-    @include option(#e36387, $color: #810000);
-}
-
-.note__edit {
-    @include option(#99f3bd, $color: #276749);
-    margin-right: 0.75rem;
+    margin-bottom: 1.5rem;
 }
 
 .note__footer {
@@ -87,6 +64,7 @@
     display: flex;
     align-self: flex-end;
     .icon {
+        cursor: pointer;
         opacity: 0.7;
         height: 32px;
         width: 32px;
