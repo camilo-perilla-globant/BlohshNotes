@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
+import { format } from 'timeago.js'
 import del from '../assets/images/delete.png'
 import archive from '../assets/images/archive.png'
 import palette from '../assets/images/palette.png'
@@ -25,9 +26,17 @@ const Edit = () => {
                 <div className='edit__note' contentEditable suppressContentEditableWarning>
                     { location.state.content }
                 </div>
-                
+                <div className="edit__info">
+                    <div className="note__category" contentEditable
+                    suppressContentEditableWarning>
+                        { location.state.category }
+                    </div>
+                    <div className="note__time">
+                        { `Last edit: ${format(location.state.updatedAt)}` }
+                    </div>
+                </div>
                 <div className="edit__controls">
-                <div className="note__icons">
+                    <div className="note__icons">
                         <div className="icon">
                             <img src={palette} alt="palette icon"/>
                         </div>
