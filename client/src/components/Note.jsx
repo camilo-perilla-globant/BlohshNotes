@@ -31,7 +31,7 @@ const Note = (props) => {
     return (
         <div className='note'>
             <div className="note__body" onClick={editNote}>
-                <div className="node__header">
+                <div className="note__header">
                     <div className="note__title">
                         {title}
                     </div>
@@ -47,7 +47,7 @@ const Note = (props) => {
                 <div className="note__footer">
                     <div className="note__timestamps">
                         <p>Updated {format(updatedAt)}</p>
-                        <p>Created {format(createdAt)}</p>
+                        {/* <p>Created {format(createdAt)}</p> */}
                     </div>
                     <div className="note__icons">
                         <div className="icon">

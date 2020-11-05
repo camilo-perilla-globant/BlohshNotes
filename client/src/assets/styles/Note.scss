@@ -24,6 +24,9 @@
     }
 }
 
+.note__header {
+    margin-bottom: 1rem;
+}
 .note__title {
     font-weight: 700;
     font-size: 1.3rem;
@@ -33,15 +36,14 @@
 
 .note__category {
     font-weight: 500;
-    font-size: 0.875rem;
-    margin-bottom: 1rem;
-    padding: 3px 6px;
+    font-size: 11px;
+    padding: 4px 6px;
     display: inline-block;
-    width: fit-content;
-    border: 1px solid #bbbfca;
+    min-width: 35px;
+    color: #3c4043;
+    background-color: rgba($color: #000000, $alpha: 0.08);
     border-radius: 12px;
-    line-height: 1.25rem;
-    opacity: 0.8;
+    opacity: 0.9;
 }
 .note__content {
     font-size: 1.1rem;
@@ -82,9 +84,6 @@
         margin: 0;
         font-weight: 300;
         font-size: 0.875rem;
-        &:first-child {
-            margin-bottom: 0.25rem;
-        }
     }
 }
 
