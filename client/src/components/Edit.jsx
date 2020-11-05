@@ -1,12 +1,15 @@
-import React, {useRef } from 'react'
+import React, { useRef } from 'react'
+import { useLocation, useHistory } from 'react-router-dom'
 import del from '../assets/images/delete.png'
 import archive from '../assets/images/archive.png'
 import palette from '../assets/images/palette.png'
 import photo from '../assets/images/photo.png'
 
-const Edit = ({location, history}) => {
+const Edit = () => {
     const el = useRef(null)
-
+    const location = useLocation()
+    const history = useHistory()
+    
     const close = e => {
         if (e.target === el.current) {
             history.push('/')
@@ -17,11 +20,12 @@ const Edit = ({location, history}) => {
         <div className='edit' ref={el} onClick={close}>
             <div className="edit__content">
                 <div className='edit__title' contentEditable suppressContentEditableWarning>
-                    { location.state.title}
+                    { location.state.title }
                 </div>
                 <div className='edit__note' contentEditable suppressContentEditableWarning>
-                    { location.state.content}
+                    { location.state.content }
                 </div>
+                
                 <div className="edit__controls">
                 <div className="note__icons">
                         <div className="icon">
