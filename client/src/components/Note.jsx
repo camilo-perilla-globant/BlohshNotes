@@ -23,7 +23,7 @@ const Note = (props) => {
                 content,
                 category,
                 updatedAt,
-                _id
+                id: _id
             }
         })
     }
