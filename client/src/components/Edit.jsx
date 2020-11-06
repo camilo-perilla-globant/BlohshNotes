@@ -1,13 +1,16 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
+import { useAppState } from '../components/AppContext'
+
 import { format } from 'timeago.js'
+
 import del from '../assets/images/delete.png'
 import archive from '../assets/images/archive.png'
 import palette from '../assets/images/palette.png'
 import photo from '../assets/images/photo.png'
 
 const Edit = () => {
-    const el = useRef(null)
+    const el = useRef(null) //modal
     const location = useLocation()
     const history = useHistory()
     
@@ -17,17 +20,73 @@ const Edit = () => {
         }
     }
 
+    const [note, setNote] = useState({})
+    const [state, dispatch] = useAppState()
+
+    const title = useRef(null)
+    const category = useRef(null)
+    const content = useRef(null)
+
+    function updateNote() {
+        console.log(note)
+        
+        fetch(`http://localhost:3000/api/v1/notes/${location.state.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify(note)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            // dispatch({
+            //     type: 'edit-note',
+            //     payload: data.new_info
+            // })
+            history.push('/')
+        })
+        .catch(err => {
+            console.log(err)
+            console.log('Token is no longer valid')
+            dispatch({
+                type: 'set-user',
+                payload: undefined
+            })
+            localStorage.clear()
+            history.push('/login')
+        })
+    }
+
+    function editNote(e) {
+        setNote({
+            ...note,
+            [e.target.dataset.name]: e.target.innerText
+        })
+    }
     return (
         <div className='edit' ref={el} onClick={close}>
             <div className="edit__content">
-                <div className='edit__title' contentEditable suppressContentEditableWarning>
+                <div className='edit__title' ref={title}
+                onInput={editNote}
+                data-name="title"
+                contentEditable
+                suppressContentEditableWarning>
                     { location.state.title }
                 </div>
-                <div className='edit__note' contentEditable suppressContentEditableWarning>
+                <div className='edit__note' ref={content}
+                onInput={editNote}
+                data-name='content'
+                contentEditable
+                suppressContentEditableWarning>
                     { location.state.content }
                 </div>
                 <div className="edit__info">
-                    <div className="note__category" contentEditable
+                    <div className="note__category" ref={category}
+                    onInput={editNote}
+                    data-name='category'
+                    contentEditable
                     suppressContentEditableWarning>
                         { location.state.category }
                     </div>
@@ -50,7 +109,9 @@ const Edit = () => {
                             <img src={del} alt="delete icon"/>
                         </div>
                     </div>
-                    <button>Edit</button>
+                    <button onClick={updateNote}>
+                        Edit
+                    </button>
                 </div>
             </div>
             

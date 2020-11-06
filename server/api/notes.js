@@ -32,7 +32,7 @@ router.post('/', passport.authenticate('jwt', { session: false }),async (req, re
     }
 })
 
-router.put('/:id', passport.authenticate('jwt', { session: false }),async (req, res) => {
+router.put('/:id', passport.authenticate('jwt', { session: false }), async (req, res) => {
     try {
         const { id } = req.params
         const newInfo = req.body
