@@ -74,6 +74,7 @@
             font-weight: 500;
             color: var(--text-color);
             cursor: pointer;
+            border-radius: 5px;
             &:focus {
                 outline: none;
                 border-color: var(--hover-color);
