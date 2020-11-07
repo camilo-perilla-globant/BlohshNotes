@@ -23,10 +23,7 @@ const Edit = () => {
     const [note, setNote] = useState({})
     const [state, dispatch] = useAppState()
 
-    const title = useRef(null)
-    const category = useRef(null)
-    const content = useRef(null)
-
+    
     function updateNote() {
         console.log(note)
         
@@ -68,14 +65,14 @@ const Edit = () => {
     return (
         <div className='edit' ref={el} onClick={close}>
             <div className="edit__content">
-                <div className='edit__title' ref={title}
+                <div className='edit__title'
                 onInput={editNote}
                 data-name="title"
                 contentEditable
                 suppressContentEditableWarning>
                     { location.state.title }
                 </div>
-                <div className='edit__note' ref={content}
+                <div className='edit__note'
                 onInput={editNote}
                 data-name='content'
                 contentEditable
@@ -83,7 +80,7 @@ const Edit = () => {
                     { location.state.content }
                 </div>
                 <div className="edit__info">
-                    <div className="note__category" ref={category}
+                    <div className="note__category"
                     onInput={editNote}
                     data-name='category'
                     contentEditable

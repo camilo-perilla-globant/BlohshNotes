@@ -60,9 +60,6 @@ const Modal = ({ history }) => {
                 alt="Close"/>
 
                 <form onSubmit={handleSubmit}>
-                    {/* <label htmlFor="title">
-                        Note Title
-                    </label> */}
                     
                     <input
                     autoComplete='off'
@@ -74,11 +71,6 @@ const Modal = ({ history }) => {
                     placeholder='Title'
                     id='title'/>
                     
-
-                    {/* <label htmlFor="category">
-                        Category
-                    </label> */}
-                    
                     <input
                     autoComplete='off'
                     onChange={handleChange}
@@ -88,15 +80,12 @@ const Modal = ({ history }) => {
                     placeholder='Category'
                     id='category'/>
                     
-
-                    {/* <label htmlFor="content">Content</label> */}
                     <textarea
                     placeholder='Content'
                     onChange={handleChange}
                     name='content'
                     id="content"
-                    rows="10">
-
+                    rows="6">
                     </textarea>
                     
                     <button type="submit">Add Note</button>
