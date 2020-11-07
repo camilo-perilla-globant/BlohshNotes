@@ -4,7 +4,7 @@ import { useAppState } from './AppContext'
 import { showToast } from '../toast'
 import Swal from 'sweetalert2'
 import Dropdown from './Dropdown'
-import arrow from '../assets/images/down-arrow.png'
+import more from '../assets/images/more.png'
 
 const Header = () => {
     const [state, dispatch] = useAppState()
@@ -41,15 +41,16 @@ const Header = () => {
                     <Link to='/add'>
                         Add Note
                     </Link>
-
-                    <img
-                    onClick={() => setShowMenu(!showMenu)}
-                    src={arrow}
-                    alt="arrow"/>
+                    <div onClick={() => setShowMenu(!showMenu)} className='btn'>
+                        <img
+                        src={more}
+                        alt="more options"/>
+                    </div>
 
                     { showMenu && <Dropdown>
                         <div className='header__options'>
-                            <a href="#">Options</a>
+                            <a href="#">Collaborators</a>
+                            <a href="#">Archive</a>
                             <a href='#' onClick={logOut}>
                                 Log out
                             </a>
