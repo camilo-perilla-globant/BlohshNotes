@@ -5,6 +5,7 @@ import { showToast } from '../toast'
 
 import { format } from 'timeago.js'
 
+
 import del from '../assets/images/delete.png'
 import archive from '../assets/images/archive.png'
 import palette from '../assets/images/palette.png'
@@ -19,6 +20,16 @@ const Edit = () => {
         if (e.target === el.current) {
             history.push('/')
         }
+    }
+
+    const deleteNote = () => {
+        history.push({
+            pathname: '/delete',
+            state: {
+                id: location.state.id,
+                wasEditing: true
+            }
+        })
     }
 
     const [note, setNote] = useState({})
@@ -107,7 +118,7 @@ const Edit = () => {
                         <div className="icon">
                             <img src={archive} alt="archive icon"/>
                         </div>
-                        <div className="icon">
+                        <div className="icon" onClick={deleteNote}>
                             <img src={del} alt="delete icon"/>
                         </div>
                     </div>

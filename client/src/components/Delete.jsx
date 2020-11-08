@@ -40,14 +40,15 @@ const Delete = () => {
                     dispatch({
                         type: 'set-categories'
                     })
+                    showToast('info', 'Note deleted successfully')
                 })
                 .catch(console.log)
-
-                showToast('info', 'Note deleted successfully')
-                history.push('/')
-                
-            } else if (result.isDismissed) {
-                history.push('/')
+                location.state.wasEditing ? 
+                    history.push('/')
+                    :
+                    history.goBack()
+            } else if (result.isDismissed){
+                history.goBack()
             }
         })
     }
