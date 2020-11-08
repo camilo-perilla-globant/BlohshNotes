@@ -14,6 +14,29 @@ const Note = (props) => {
     const {_id, createdAt, updatedAt} = props
     const history = useHistory()
     
+    const delegateClick = e => {
+        switch (e.target.className) {
+            case 'delete':
+            case 'icon delete':
+                deleteNote()
+                break
+            case 'image':
+            case 'icon image':
+                console.log('Add image')
+                break
+            case 'archive':
+            case 'icon archive':
+                console.log('Archive note')
+                break
+            case 'color':
+            case 'icon color':
+                console.log('Change color')
+                break
+            default:
+                editNote()
+        }
+
+    }
 
     const editNote = () => {
         history.push({
@@ -28,9 +51,18 @@ const Note = (props) => {
         })
     }
 
+    const deleteNote = () => {
+        history.push({
+            pathname: '/delete',
+            state: {
+                id: _id
+            }
+        })
+    }
+
     return (
         <div className='note'>
-            <div className="note__body" onClick={editNote}>
+            <div className="note__body" onClick={delegateClick}>
                 <div className="note__header">
                     <div className="note__title">
                         {title}
@@ -50,17 +82,20 @@ const Note = (props) => {
                         {/* <p>Created {format(createdAt)}</p> */}
                     </div>
                     <div className="note__icons">
-                        <div className="icon">
-                            <img src={palette} alt="palette icon"/>
+                        <div className="icon color">
+                            <img src={palette} alt="palette icon"
+                            className='color'/>
                         </div>
-                        <div className="icon">
-                            <img src={photo} alt="photo icon"/>
+                        <div className="icon image">
+                            <img src={photo} alt="photo icon"
+                            className='image'/>
                         </div>
-                        <div className="icon">
-                            <img src={archive} alt="archive icon"/>
+                        <div className="icon archive">
+                            <img src={archive} alt="archive icon"
+                            className='archive'/>
                         </div>
-                        <div className="icon">
-                            <img src={del} alt="delete icon"/>
+                        <div className="icon delete">
+                            <img src={del} alt="delete icon" className='delete'/>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { useLocation, useHistory } from 'react-router-dom'
 import { useAppState } from '../components/AppContext'
+import { showToast } from '../toast'
 
 import { format } from 'timeago.js'
 
@@ -43,6 +44,7 @@ const Edit = () => {
             //     payload: data.new_info
             // })
             history.push('/')
+            showToast('success', 'Note updated succesfully')
         })
         .catch(err => {
             console.log(err)
