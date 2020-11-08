@@ -17,28 +17,44 @@ const appStateReducer = (state, action) => {
                 ...state,
                 categories: state.notes.map(note => note.category)
             }
+
         case 'set-category':
             return {
                 ...state,
                 currentCategory: action.payload
             }
 
-
         case 'set-search_term':
             return {
                 ...state,
                 searchTerm: action.payload
             }
+
         case 'set-query':
             return {
                 ...state,
                 query: action.payload
             }
+
         case 'set-user':
             return {
                 ...state,
                 user: action.payload
             }
+
+        case 'delete-note':
+            return {
+                ...state,
+                notes: state.notes.filter(note => (
+                    !(note._id === action.payload)
+                ))
+            }
+            
+        case 'add-note':
+            return {
+                ...state,
+                notes: [...state.notes, action.payload]
+            }   
 
         case 'edit-note':
             return {

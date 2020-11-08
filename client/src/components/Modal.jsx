@@ -20,7 +20,17 @@ const Modal = ({ history }) => {
             },
             body: JSON.stringify(note)
         })
-        .then(res => res.json()).then(console.log)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            dispatch({
+                type: 'add-note',
+                payload: data.info
+            })
+            dispatch({
+                type:'set-categories'
+            })
+        })
         .catch(err => {
             console.log(err)
             console.log('Token is no longer valid')
