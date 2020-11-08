@@ -28,7 +28,7 @@ const Edit = () => {
     function updateNote() {
         console.log(note)
         
-        fetch(`http://localhost:3000/api/v1/notes/${location.state.id}`, {
+        fetch(`/api/v1/notes/${location.state.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
