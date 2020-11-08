@@ -32,7 +32,7 @@ const NoteContainer = () => {
                 localStorage.clear()
                 history.push('/login')
             })
-        }, 250)
+        }, 0)
 
     }, [])
 

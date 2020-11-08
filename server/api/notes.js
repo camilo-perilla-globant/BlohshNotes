@@ -25,7 +25,8 @@ router.post('/', passport.authenticate('jwt', { session: false }),async (req, re
         const newNote = new Note(req.body)
         await newNote.save()
         res.json({
-            message: 'Note was created'
+            message: 'Note was created',
+            info: newNote
         })
     } catch (err) {
         next(err)

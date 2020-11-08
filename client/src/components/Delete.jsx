@@ -1,13 +1,14 @@
 import React from 'react'
 import Swal from 'sweetalert2'
 import { showToast } from '../toast'
+import { useAppState } from './AppContext'
 import { useLocation, useHistory } from 'react-router-dom'
 
 const Delete = () => {
 
     const location = useLocation()
     const history = useHistory()
-
+    const [state, dispatch] = useAppState()
     const { id } = location.state
 
     const deleteNote = () => {
@@ -28,8 +29,18 @@ const Delete = () => {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('token')}`
                     }
-                }).then(res => res.json())
-                .then(console.log)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    dispatch({
+                        type: 'delete-note',
+                        payload: id
+                    })
+                    dispatch({
+                        type: 'set-categories'
+                    })
+                })
                 .catch(console.log)
 
                 showToast('info', 'Note deleted successfully')
