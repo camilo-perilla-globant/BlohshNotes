@@ -22,7 +22,7 @@ const Delete = () => {
         })
         .then(result => {
             if (result.isConfirmed) {
-                fetch(`/api/v1/notes/${id}`, {
+                fetch(`http://localhost:3000/api/v1/notes/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

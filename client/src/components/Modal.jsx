@@ -12,7 +12,7 @@ const Modal = ({ history }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        fetch('/api/v1/notes/', {
+        fetch('http://localhost:3000/api/v1/notes/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
