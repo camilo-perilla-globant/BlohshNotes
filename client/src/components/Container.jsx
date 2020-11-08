@@ -5,7 +5,6 @@ import { useHistory } from 'react-router-dom'
 
 const NoteContainer = () => {
     const [state, dispatch] = useAppState()
-    const [notes, setNotes] = useState([])
     const history = useHistory()
     useEffect(() => {
         setTimeout(() => {
@@ -13,7 +12,7 @@ const NoteContainer = () => {
                 headers: { 'Authorization': `Bearer ${localStorage.getItem('token')}`}
             })
             .then(res => res.json()).then(data => {
-                setNotes(data.info)
+                
                 dispatch({
                     type: 'set-notes',
                     payload: data.info
@@ -43,7 +42,7 @@ const NoteContainer = () => {
         return note[query].toLowerCase().includes(searchTerm.toLowerCase())
     })
     .filter(note => note.category.includes(currentCategory))
-    .map(note => ({...note, date: Date.parse(note.updatedAt)}))
+    .map(note => ({...note, date: Date.parse(note.updatedAt)})) //Getting date in milliseconds to sort by last updated
     .sort((a, b) => b.date - a.date)
 
     return (

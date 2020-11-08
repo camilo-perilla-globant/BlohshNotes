@@ -39,10 +39,13 @@ const Edit = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            // dispatch({
-            //     type: 'edit-note',
-            //     payload: data.new_info
-            // })
+            dispatch({
+                type: 'edit-note',
+                payload: {
+                    newInfo : data.new_info,
+                    id: location.state.id
+                }
+            })
             history.push('/')
             showToast('success', 'Note updated succesfully')
         })
