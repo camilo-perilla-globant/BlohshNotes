@@ -60,7 +60,7 @@ const Header = () => {
                     </>
                     :
                     <Link to='/login' className='header__login'>
-                        Login / Register
+                        Log in / Register
                     </Link>
                 }
             </div>
