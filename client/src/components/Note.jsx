@@ -78,8 +78,8 @@ const Note = (props) => {
                 </div>
                 <div className="note__footer">
                     <div className="note__timestamps">
-                        <p>Updated {format(updatedAt)}</p>
-                        {/* <p>Created {format(createdAt)}</p> */}
+                        {/* <p>Updated {format(updatedAt)}</p> */}
+                        <p>Created {format(createdAt)}</p>
                     </div>
                     <div className="note__icons">
                         <div className="icon color">

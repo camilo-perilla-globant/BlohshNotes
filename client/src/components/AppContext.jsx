@@ -39,6 +39,18 @@ const appStateReducer = (state, action) => {
                 ...state,
                 user: action.payload
             }
+
+        case 'edit-note':
+            return {
+                ...state,
+                notes: state.notes.map(note => {
+                    if (note._id === action.payload.id) {
+                        const newNote = {...note, ...action.payload.newInfo}
+                        return newNote
+                    }
+                    return note
+                })
+            }
         default:
             return state
     }
