@@ -3,14 +3,24 @@ import React from 'react'
 const Home = () => {
     return (
         <div className='home'>
-            <h2>
-                Welcome pal
-            </h2>
-            <h4>In this app you can create, edit, delete and sort notes. The notes will be safely stored in the cloud so you can have access to them from anywhere, your phone, tablet or your laptop</h4>
-            <h4>
-                Click that button up there to login or create an account. 
-                Hope you have fun and find this project useful, now go ahead and make some notes 😙
-            </h4>
+            <h1>
+                Accomplish more with better notes
+            </h1>
+            <h5>
+                Blohsh Notes allows you to capture those ideas that came out of nowhere and find them fast
+            </h5>
+            <div className="note-demo">
+                <p className="feature">Create notes</p>
+                <p className="feature">Edit notes</p>
+                <p className="feature">Delete notes</p>
+                <p className="feature">Share notes</p>
+                <p className="feature">Sort notes</p>
+                <p className="feature">Your notes</p>
+                <p className="feature">Your info</p>
+                <p className="feature">Keep it ••••••</p>
+                <p className="feature">Keep it ••••</p>
+
+            </div>
         </div>
     )
 }
