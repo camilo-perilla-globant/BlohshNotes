@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import Note from './Note'
 import { useAppState } from './AppContext'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 const NoteContainer = () => {
     const [state, dispatch] = useAppState()
@@ -45,7 +45,8 @@ const NoteContainer = () => {
     .map(note => ({...note, date: Date.parse(note.updatedAt)})) //Getting date in milliseconds to sort by last updated
     .sort((a, b) => b.date - a.date)
 
-    return (
+    return (filteredNotes.length > 0)
+    ? (
         <div className='grid-container'>
             {filteredNotes.map(note => {
                 return(
@@ -54,6 +55,10 @@ const NoteContainer = () => {
             })}
         </div>
     )
+    : <p className='no-notes'>
+        You don't have notes yet.
+        <Link to='/add'>Add your first note here</Link>
+    </p>
 }
 
 export default NoteContainer

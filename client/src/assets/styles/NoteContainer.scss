@@ -12,3 +12,16 @@
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+.no-notes {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 500;
+    a {
+        color: royalblue;
+    }
+    @media (min-width: 768px) {
+        font-size: 1.5rem;
+    }
+
+}
