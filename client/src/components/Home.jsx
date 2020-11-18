@@ -3,6 +3,8 @@ import { gsap } from "gsap";
 import { TextPlugin } from "gsap/TextPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import { useHistory } from 'react-router-dom'
+
 import notes from '../assets/images/notes.svg'
 import secure from '../assets/images/secure.svg'
 import responsive from '../assets/images/responsive-design.svg'
@@ -17,6 +19,10 @@ const Home = () => {
 
     const addToArr = el => {
         features.current.push(el)
+    }
+    const history = useHistory()
+    const start = () => {
+        history.push('/login')
     }
     useEffect(() => {
         features.current.forEach((el, i) => {
@@ -109,6 +115,13 @@ const Home = () => {
                     <h3>Find things fast</h3>
                     <p>Bunch of options to search and sort notes, so you get what you need when you need it</p>
                 </FeatureItem>
+            </div>
+
+            <div className="home__cta">
+                <button onClick={start}>
+                    Get started now
+                </button>
+                <p>Capturing ideas has never been so much easy</p>
             </div>
         </div>
     )
