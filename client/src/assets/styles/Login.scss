@@ -82,6 +82,7 @@
         font-weight: 500;
         margin-left: 1rem;
         border-radius: 3px;
+        border: none;
         &:focus {
             outline: none;
             box-shadow: 0 0 0 3px rgba($color: #007bff40, $alpha: 0.25);
