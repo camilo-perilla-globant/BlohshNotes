@@ -1,29 +1,44 @@
-# Webpack
-## The basic set up for Webpack
+# Blohsh Notes
+## Taking notes has never been so easy
 
-Sometimes setting up webpack for every new project is a hassle.
-I guess Parcel is a nice option, but I do want to have just the basic set up handy 😊
+This is a full stack web application made with the **MERN stack** (MongoDB, Express, React.js, Node.js).
 
-### The master branch has the basic set up
-* file-loader
-* css-loader
-* html-loader
-* CleanWebpackPlugin and HtmlWebpackPlugin
-### The sass branch is able to compile sass to css
-* sass-loader
-* node-sass library
+### Features:
+* Create notes
+* Edit notes
+* Delete notes
+* Search notes
+* Sort notes by categories
 
-### The react branch has ReactJS up and running with support for modern JavaScript
-* @babel/core
-* @babel/preset-env
-* babel-loader
-* react
-* react-dom
-* react-router-dom
+### Future features: 
+* Add images to the notes
+* Have an archive folder
+* Share notes with co-workers
+* Edit the color for the note
 
-> Note: this branch uses sass by default
 
-### The react-tailwind branch is when you feel crazy enough to play around with TailwindCSS
-* tailwindcss
-* postcss-cli
-* autoprefixer
+### Accounts and information
+When you create an account, your password is *encrypted and safely stored in the database*, so only **you** will have access to your notes. The authentication mechanism is **JWT** (JSON Web Token).
+
+In a nutshell, when the user logs in using his credentials, a JSON Web Token is returned. This token has a expiration time of 15 minutes. After that, the user must login again. Whenever the user wants to access a protected *route* (create, edit or delete notes) or *resource* (your notes), the browser sends the JWT, typically in the **Authorization** header using the *Bearer schema*.
+
+The server's protected routes will check for a valid **JWT** in the *Authorization header*, and if it is present, the user will be allowed to access protected resources.
+So in this way is the client who knows what kind of access it has, therefore, avoiding unnecessary calls to the database.
+
+### Scripts:
+
+You'll need to run two commands to getting working. 
+
+**npm run dev**
+
+This will start the development server and communication with MongoDB
+
+**npm run devServer**
+
+This will run the webpack dev server to see the UI on localhost port 3000
+
+> Note: You should use the main branch to run these commands
+
+Please feel free to play around with the project. If you want to contribute, by all means go ahead and submit your PR 😁.
+
+Take a look to the deployed version [here](https://blohsh-notes.herokuapp.com/).
