@@ -11,8 +11,8 @@ const Delete = () => {
     const [state, dispatch] = useAppState()
     const { id } = location.state
 
-    const deleteNote = () => {
-        Swal.fire({
+    const deleteNote = async () => {
+        const result = await Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to recover this note",
             icon: 'warning',
@@ -21,40 +21,54 @@ const Delete = () => {
             cancelButtonColor: '#e36387',
             confirmButtonText: 'Yes, delete it'
         })
-        .then(result => {
-            if (result.isConfirmed) {
-                fetch(`/api/v1/notes/${id}`, {
+
+        if (result.isConfirmed) {
+            try {
+                const token = localStorage.getItem('token') || undefined
+                const api = '/api/v1/notes/'
+                const res = await fetch(api + id, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('token')}`
-                    }
+                        'Authorization': `Bearer ${token}`
+                    } 
                 })
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                    dispatch({
-                        type: 'delete-note',
-                        payload: id
-                    })
-                    dispatch({
-                        type: 'set-categories'
-                    })
-                    showToast('info', 'Note deleted successfully')
+                const data = await res.json()
+                console.log(data)
+                dispatch({
+                    type: 'delete-note',
+                    payload: id
                 })
-                .catch(console.log)
-                location.state.wasEditing ? 
-                    history.push('/')
-                    :
-                    history.goBack()
-            } else if (result.isDismissed){
-                history.goBack()
+                dispatch({
+                    type: 'set-categories'
+                })
+                showToast('info', 'Note deleted successfully')
+                
+                location.state.wasEditing 
+                ? history.push('/') : history.goBack()
+
+            } catch (err) {
+                console.log(err)
             }
+            
+        }
+        else {
+            history.goBack()
+        }
+        return result
+    }
+
+    function showDelete() {
+        deleteNote()
+        .then(x => {
+            console.log(x)
+            return 
         })
     }
+
     return (
         <div>
-            {deleteNote()}
+            {showDelete()}
         </div>
     )
 }
