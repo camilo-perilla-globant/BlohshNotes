@@ -11,7 +11,7 @@ import archive from '../assets/images/archive.png'
 import palette from '../assets/images/palette.png'
 import photo from '../assets/images/photo.png'
 
-const api = 'http://localhost:3000/api/v1/notes/'
+const api = '/api/v1/notes/'
 
 const Edit = () => {
     const el = useRef(null) //modal
