@@ -55,10 +55,13 @@ const NoteContainer = () => {
             })}
         </div>
     )
-    : <p className='no-notes'>
-        You don't have notes yet.
-        <Link to='/add'>Add your first note here</Link>
-    </p>
+    : 
+    (
+        <p className='no-notes'>
+            You don't have notes yet.
+            <Link to='/add'>Add your first note here</Link>
+        </p>
+    )
 }
 
 export default NoteContainer

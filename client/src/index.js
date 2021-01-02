@@ -10,6 +10,6 @@ ReactDOM.render(
     <AppStateProvider>
         <App />
     </AppStateProvider>,
-    document.getElementById('root'))
+document.getElementById('root'))
 
 

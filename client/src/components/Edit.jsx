@@ -11,6 +11,8 @@ import archive from '../assets/images/archive.png'
 import palette from '../assets/images/palette.png'
 import photo from '../assets/images/photo.png'
 
+const api = 'http://localhost:3000/api/v1/notes/'
+
 const Edit = () => {
     const el = useRef(null) //modal
     const location = useLocation()
@@ -35,41 +37,40 @@ const Edit = () => {
     const [note, setNote] = useState({})
     const [state, dispatch] = useAppState()
 
+
+    async function updateNote() {
+        try {
+            const token = localStorage.getItem('token') || undefined
+            const res = await fetch(api+location.state.id, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(note)
+            })
     
-    function updateNote() {
-        console.log(note)
-        
-        fetch(`/api/v1/notes/${location.state.id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}`
-            },
-            body: JSON.stringify(note)
-        })
-        .then(res => res.json())
-        .then(data => {
+            const data = await res.json()
             console.log(data)
             dispatch({
                 type: 'edit-note',
                 payload: {
-                    newInfo : data.new_info,
+                    newInfo: data.new_info,
                     id: location.state.id
                 }
             })
             history.push('/')
             showToast('success', 'Note updated succesfully')
-        })
-        .catch(err => {
+        }
+        catch (err) {
             console.log(err)
-            console.log('Token is no longer valid')
             dispatch({
                 type: 'set-user',
                 payload: undefined
             })
             localStorage.clear()
             history.push('/login')
-        })
+        }  
     }
 
     function editNote(e) {
@@ -104,7 +105,9 @@ const Edit = () => {
                         { location.state.category }
                     </div>
                     <div className="note__time">
-                        { `Last edit: ${format(location.state.updatedAt)}` }
+                        {
+                        `Last edit: ${format(location.state.updatedAt)}`
+                        }
                     </div>
                 </div>
                 <div className="edit__controls">
