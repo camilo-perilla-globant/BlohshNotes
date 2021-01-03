@@ -10,26 +10,27 @@ const Header = () => {
     const [state, dispatch] = useAppState()
     const [showMenu, setShowMenu] = useState(false)
 
-    function logOut() {
-        Swal.fire({
+    async function logOut() {
+        const result = await Swal.fire({
             title: 'Log out of Blohsh Notes',
             text: 'Are you sure?',
             showCancelButton: true,
             icon: 'warning',
             cancelButtonText: 'Cancel',
             confirmButtonText: 'Log out'
-        }).then(value => {
-            if (value.isConfirmed) {
-                setShowMenu(false)
-                showToast('info', 'You have been logged out')
-                localStorage.clear()
-                dispatch({
-                    type: 'set-user',
-                    payload: undefined
-                })
-            }
         })
+
+        if (result.isConfirmed) {
+            setShowMenu(false)
+            showToast('info', 'You have been logged out')
+            localStorage.clear()
+            dispatch({
+                type: 'set-user',
+                payload: undefined
+            })
+        }
     }
+
     return (
         <header>
             <div className="header__logo">
@@ -47,7 +48,8 @@ const Header = () => {
                         alt="more options"/>
                     </div>
 
-                    { showMenu && <Dropdown>
+                    { showMenu &&
+                    <Dropdown>
                         <div className='header__options'>
                             <a href="#">Collaborators</a>
                             <a href="#">Archive</a>
