@@ -20,7 +20,7 @@ This is a full stack web application made with the **MERN stack** (MongoDB, Expr
 ### Accounts and information
 When you create an account, your password is *encrypted and safely stored in the database*, so only **you** will have access to your notes. The authentication mechanism is **JWT** (JSON Web Token).
 
-In a nutshell, when the user logs in using his credentials, a JSON Web Token is returned. This token has a expity time of 15 minutes. After that, the user must login again. Whenever the user wants to access a protected *route* (create, edit or delete notes) or *resource* (your notes), the browser sends the JWT, typically in the **Authorization** header using the *Bearer schema*.
+In a nutshell, when the user logs in using his credentials, a JSON Web Token is returned. This token has a expiry time of 15 minutes. After that, the user must login again. Whenever the user wants to access a protected *route* (create, edit or delete notes) or *resource* (your notes), the browser sends the JWT, typically in the **Authorization** header using the *Bearer schema*.
 
 The server's protected routes will check for a valid **JWT** in the *Authorization header*, and if this is present, the user will be allowed to access protected resources.
 So in this way, is the client who knows what kind of access it has, therefore, avoiding unnecessary calls to the database.
